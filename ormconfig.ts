@@ -10,7 +10,7 @@ module.exports = {
   ],
   "synchronize": false,
   "migrations": [
-    "dist/migration/*.js"
+    "dist/migrations/*.js"
   ],
   "cli": {
     "migrationsDir": "migration"
