@@ -1,3 +1,4 @@
+import { CreateUserInput } from 'src/user/dto/create-user.input';
 import { User } from 'src/user/entities/user.entity';
 import { Connection } from 'typeorm';
 const faker = require('faker');
@@ -17,16 +18,13 @@ export default {
   },
 };
 
-const buildUsers = (): User[] => {
-  const usersInserts: User[] = [];
+const buildUsers = (): CreateUserInput[] => {
+  const usersInserts: CreateUserInput[] = [];
   for (const userId in [1, 2, 3, 4, 5]) {
     usersInserts.push({
-      id: +userId,
-      first_name: faker.name.firstName(),
-      last_name: faker.name.lastName(),
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
       email: faker.internet.email(),
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
   }
   return usersInserts;

@@ -16,11 +16,11 @@ export class User {
 
   @Column({ type: 'varchar', length: 255 })
   @Field(() => String)
-  first_name: string;
+  firstName: string;
 
   @Column({ type: 'varchar', length: 255 })
   @Field(() => String)
-  last_name: string;
+  lastName: string;
 
   @Column({ type: 'varchar', length: 255 })
   @Field(() => String)
