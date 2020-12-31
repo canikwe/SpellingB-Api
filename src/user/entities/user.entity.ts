@@ -1,30 +1,36 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ObjectType, Field, Int, GraphQLISODateTime } from '@nestjs/graphql';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @ObjectType()
-@Entity("Users")
+@Entity('Users')
 export class User {
-  @Field(type => Int)
+  @Field((type) => Int)
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "varchar", length: 255})
+  @Column({ type: 'varchar', length: 255 })
   @Field(() => String)
   first_name: string;
 
-  @Column({ type: "varchar", length: 255})
+  @Column({ type: 'varchar', length: 255 })
   @Field(() => String)
   last_name: string;
-  
-  @Column({ type: "varchar", length: 255})
+
+  @Column({ type: 'varchar', length: 255 })
   @Field(() => String)
   email: string;
-  
-  @Column({ type:'date'})
-  @Field(() => Date)
+
+  @CreateDateColumn({ type: 'timestamp' })
+  @Field()
   createdAt: Date;
 
-  @Column({ type:'date'})
+  @UpdateDateColumn({ type: 'timestamp' })
   @Field(() => Date)
   updatedAt: Date;
 }
