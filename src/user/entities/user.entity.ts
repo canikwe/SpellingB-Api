@@ -2,7 +2,7 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
-@Entity("User")
+@Entity("Users")
 export class User {
   @Field(type => Int)
   @PrimaryGeneratedColumn()
@@ -10,7 +10,11 @@ export class User {
 
   @Column({ type: "varchar", length: 255})
   @Field(() => String)
-  name: string;
+  first_name: string;
+
+  @Column({ type: "varchar", length: 255})
+  @Field(() => String)
+  last_name: string;
   
   @Column({ type: "varchar", length: 255})
   @Field(() => String)

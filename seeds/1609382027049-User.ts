@@ -22,7 +22,8 @@ const buildUsers = (): User[] => {
   for (const userId in [1, 2, 3, 4, 5]) {
     usersInserts.push({
       id: +userId,
-      name: faker.name.findName(),
+      first_name: faker.name.firstName(),
+      last_name: faker.name.lastName(),
       email: faker.internet.email(),
       createdAt: new Date(),
       updatedAt: new Date()
