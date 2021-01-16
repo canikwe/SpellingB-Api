@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../src/app.module';
-import userSeeds from '../seeds/1609382027049-User';
 import { Connection, getConnection } from 'typeorm';
 import { ISeeder } from './seeder.interface';
 import { clear } from 'console';

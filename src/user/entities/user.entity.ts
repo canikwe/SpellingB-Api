@@ -1,4 +1,4 @@
-import { ObjectType, Field, Int, GraphQLISODateTime } from '@nestjs/graphql';
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 import {
   Column,
   CreateDateColumn,
@@ -14,23 +14,23 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Field()
   @Column({ type: 'varchar', length: 255 })
-  @Field(() => String)
   firstName: string;
 
+  @Field()
   @Column({ type: 'varchar', length: 255 })
-  @Field(() => String)
   lastName: string;
 
+  @Field()
   @Column({ type: 'varchar', length: 255 })
-  @Field(() => String)
   email: string;
 
+  @Field((type) => Date)
   @CreateDateColumn({ type: 'timestamp' })
-  @Field()
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'timestamp' })
   @Field(() => Date)
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 }
