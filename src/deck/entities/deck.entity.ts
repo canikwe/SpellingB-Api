@@ -15,7 +15,7 @@ export class Deck extends CommonEntity {
   isPublic: boolean;
 
   @Field((type) => User)
-  @ManyToOne((type) => User)
+  @ManyToOne((type) => User, (user) => user.decks)
   user: User;
 
   @Field((type) => Int)
