@@ -1,19 +1,10 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { ObjectType, Field } from '@nestjs/graphql';
+import { CommonEntity } from '../../_shared/entities/base.entity';
+import { Column, Entity } from 'typeorm';
 
 @ObjectType()
 @Entity('Users')
-export class User {
-  @Field((type) => Int)
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class User extends CommonEntity {
   @Field()
   @Column({ type: 'varchar', length: 255 })
   firstName: string;
@@ -25,12 +16,4 @@ export class User {
   @Field()
   @Column({ type: 'varchar', length: 255 })
   email: string;
-
-  @Field((type) => Date)
-  @CreateDateColumn({ type: 'timestamp' })
-  createdAt: Date;
-
-  @Field(() => Date)
-  @UpdateDateColumn({ type: 'timestamp' })
-  updatedAt: Date;
 }
