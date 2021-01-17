@@ -19,5 +19,6 @@ export class Deck extends CommonEntity {
   user: User;
 
   @Field((type) => Int)
+  @Column('int')
   userId: number;
 }
