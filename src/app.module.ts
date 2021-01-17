@@ -14,7 +14,7 @@ import { WordModule } from './word/word.module';
     }),
     TypeOrmModule.forRoot(),
     UserModule,
-    WordModule
+    WordModule,
   ],
   controllers: [AppController],
   providers: [AppService],

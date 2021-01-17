@@ -5,7 +5,7 @@ import { CommonEntity } from 'src/_shared/entities/common.entity';
 @ObjectType()
 @Entity('Words')
 export class Word extends CommonEntity {
-  @Field((type) => Int)
-  @Column()
+  @Field()
+  @Column({ unique: true })
   name: string;
 }

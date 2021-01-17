@@ -38,7 +38,7 @@ export default {
 
 `;
 
-fs.writeFile(`seeds/${date}-${seedName}.ts`, template, (err: Error) => {
+fs.writeFile(`seeds/${date}-${seedName}.seeder.ts`, template, (err: Error) => {
   if (err) {
     console.log(err);
   } else {

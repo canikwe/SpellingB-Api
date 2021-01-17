@@ -1,4 +1,4 @@
-import { getRepository } from 'typeorm';
+import { Connection, getRepository } from 'typeorm';
 import { Word } from 'src/word/entities/word.entity';
 import { CreateWordInput } from '../src/word/dto/create-word.input';
 const faker = require('faker');
@@ -14,17 +14,22 @@ const faker = require('faker');
 export default {
   name: 'Word' /** Do not update */,
   timeStamp: 1610847968294 /** Do not update */,
-  up: async (): Promise<number> => {
+  up: async (connection: Connection): Promise<number> => {
     /**
      * Hint: start by commenting these lines in.
      */
 
-    /** Get the Word repository to access Type ORM repository methods on the Entity */
-    const wordRepository = getRepository(Word);
     const wordInserts = buildWords();
 
     /** Adds records to the Word database table */
-    const result = await wordRepository.insert(wordInserts);
+    // const result = await wordRepository.insert(wordInserts).catch(console.log)
+    const result = await connection
+      .createQueryBuilder()
+      .insert()
+      .into(Word)
+      .values(wordInserts)
+      .onConflict(`("name") DO NOTHING`)
+      .execute();
 
     /** Return the number of inserted table records */
     return result.generatedMaps.length;
@@ -36,7 +41,7 @@ export default {
 };
 
 const buildWords = (): CreateWordInput[] => {
-  return new Array(10).fill(undefined).reduce((acc: CreateWordInput[]) => {
+  return new Array(100).fill(undefined).reduce((acc: CreateWordInput[]) => {
     return acc.concat({ name: faker.random.word().toLowerCase() });
   }, []);
 };
