@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { getRepository } from 'typeorm';
+import { FindManyOptions, getRepository } from 'typeorm';
 import { Deck } from './entities/deck.entity';
 
 @Injectable()
 export class DeckService {
-  findAll(): Promise<Deck[]> {
-    return getRepository(Deck).find();
+  findAll(options?: FindManyOptions<Deck>): Promise<Deck[]> {
+    return getRepository(Deck).find(options);
   }
 }

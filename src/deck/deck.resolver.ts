@@ -6,7 +6,7 @@ import { Deck } from './entities/deck.entity';
 export class DeckResolver {
   constructor(private readonly deckService: DeckService) {}
 
-  @Query(() => [Deck], { name: 'deck' })
+  @Query(() => [Deck], { name: 'decks' })
   findAll(): Promise<Deck[]> {
     return this.deckService.findAll();
   }
