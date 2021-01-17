@@ -19,7 +19,7 @@ export default {
 };
 
 const buildUsers = (): CreateUserInput[] => {
-  return new Array(5).fill(undefined).reduce((acc: CreateUserInput[]) => {
+  return new Array(1).fill(undefined).reduce((acc: CreateUserInput[]) => {
     return acc.concat({
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
