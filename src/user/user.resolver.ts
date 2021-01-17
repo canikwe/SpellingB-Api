@@ -29,7 +29,7 @@ export class UserResolver {
   }
 
   @ResolveField((type) => [Deck], { name: 'decks' })
-  async decks(@Parent() user: User) {
+  async decks(@Parent() user: User): Promise<Deck[]> {
     const { id: userId } = user;
     return this.deckService.findAll({ where: { userId } });
   }
