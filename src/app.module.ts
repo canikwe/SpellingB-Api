@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { WordModule } from './word/word.module';
+import { DeckModule } from './deck/deck.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { WordModule } from './word/word.module';
     TypeOrmModule.forRoot(),
     UserModule,
     WordModule,
+    DeckModule,
   ],
   controllers: [AppController],
   providers: [AppService],
