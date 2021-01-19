@@ -11,7 +11,7 @@ export class DeckWord extends CommonEntity {
   @Column()
   starred: boolean;
 
-  @Field()
+  @Field((type) => Int)
   @Column()
   order: number;
 

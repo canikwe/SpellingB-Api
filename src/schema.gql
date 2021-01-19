@@ -20,7 +20,7 @@ type DeckWord {
   createdAt: DateTime!
   updatedAt: DateTime!
   starred: Boolean!
-  order: Float!
+  order: Int!
   word: Word!
   wordId: Int!
   deck: Deck!
