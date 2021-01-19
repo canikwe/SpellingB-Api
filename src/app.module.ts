@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { WordModule } from './word/word.module';
 import { DeckModule } from './deck/deck.module';
+import { DeckWordsModule } from './deck-words/deck-words.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { DeckModule } from './deck/deck.module';
     UserModule,
     WordModule,
     DeckModule,
+    DeckWordsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,7 +1,8 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { User } from 'src/user/entities/user.entity';
-import { Column, Entity, ManyToOne } from 'typeorm';
-import { CommonEntity } from '../../_shared/entities/common.entity';
+import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import { CommonEntity } from 'src/_shared/entities/common.entity';
+import { DeckWord } from 'src/deck-words/entities/deck-word.entity';
 
 @ObjectType()
 @Entity('Decks')
@@ -21,4 +22,8 @@ export class Deck extends CommonEntity {
   @Field((type) => Int)
   @Column('int')
   userId: number;
+
+  @Field((type) => [DeckWord])
+  @OneToMany(() => DeckWord, (deckWord) => deckWord.deck)
+  deckWords: DeckWord[];
 }
