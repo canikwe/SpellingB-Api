@@ -1,12 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { CreateWordInput } from './dto/create-word.input';
-import { UpdateWordInput } from './dto/update-word.input';
 import { Word } from './entities/word.entity';
-import { getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class WordService {
-  async findAll(): Promise<Word[]> {
-    return getRepository(Word).find();
+  constructor(
+    @InjectRepository(Word) private readonly _wordRepository: Repository<Word>,
+  ) {}
+
+  findAll(): Promise<Word[]> {
+    return this._wordRepository.find();
+  }
+
+  findOne(id: number) {
+    return this._wordRepository.findOne();
   }
 }

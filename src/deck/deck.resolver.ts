@@ -1,27 +1,17 @@
-import {
-  Resolver,
-  Query,
-  Mutation,
-  Args,
-  Int,
-  ResolveField,
-  Parent,
-} from '@nestjs/graphql';
+import { Resolver, ResolveField, Parent } from '@nestjs/graphql';
 import { DeckService } from './deck.service';
 import { Deck } from './entities/deck.entity';
 import { User } from '../user/entities/user.entity';
 import { UserService } from '../user/user.service';
+import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 
 @Resolver(() => Deck)
-export class DeckResolver {
+export class DeckResolver extends BaseResolver(Deck) {
   constructor(
     private readonly deckService: DeckService,
     private readonly userService: UserService,
-  ) {}
-
-  @Query(() => [Deck], { name: 'decks' })
-  findAll(): Promise<Deck[]> {
-    return this.deckService.findAll();
+  ) {
+    super(deckService);
   }
 
   @ResolveField((type) => [User], { name: 'user' })
