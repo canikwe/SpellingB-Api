@@ -1,7 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { Word } from '../../words/entities/word.entity';
-import { Deck } from '../../deck/entities/deck.entity';
+import { Deck } from '../../decks/entities/deck.entity';
 import { CommonEntity } from '../../_base/entities/common.entity';
 
 @ObjectType()

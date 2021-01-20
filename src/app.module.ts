@@ -6,7 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './users/user.module';
 import { WordModule } from './words/word.module';
-import { DeckModule } from './deck/deck.module';
+import { DeckModule } from './decks/deck.module';
 import { DeckWordsModule } from './deck-words/deck-words.module';
 import { SharedModule } from './_base/base.module';
 

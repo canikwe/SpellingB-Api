@@ -1,8 +1,8 @@
 import { Resolver, ResolveField, Parent } from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { User } from './entities/user.entity';
-import { Deck } from 'src/deck/entities/deck.entity';
-import { DeckService } from 'src/deck/deck.service';
+import { Deck } from 'src/decks/entities/deck.entity';
+import { DeckService } from 'src/decks/deck.service';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 
 @Resolver(() => User)

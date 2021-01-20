@@ -1,7 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 import { DeckWord } from 'src/deck-words/entities/deck-word.entity';
 import { Word } from '../src/words/entities/word.entity';
-import { Deck } from '../src/deck/entities/deck.entity';
+import { Deck } from '../src/decks/entities/deck.entity';
 import { CreateDeckWordInput } from '../src/deck-words/dto/create-deck-word.input';
 
 /**

@@ -1,5 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
-import { Deck } from 'src/deck/entities/deck.entity';
+import { Deck } from 'src/decks/entities/deck.entity';
 import { CommonEntity } from 'src/_base/entities/common.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 
