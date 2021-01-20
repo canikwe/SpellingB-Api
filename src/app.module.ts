@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { WordModule } from './word/word.module';
 import { DeckModule } from './deck/deck.module';
 import { DeckWordsModule } from './deck-words/deck-words.module';
+import { SharedModule } from './_base/base.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { DeckWordsModule } from './deck-words/deck-words.module';
     WordModule,
     DeckModule,
     DeckWordsModule,
+    SharedModule,
   ],
   controllers: [AppController],
   providers: [AppService],

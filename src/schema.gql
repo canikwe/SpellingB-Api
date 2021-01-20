@@ -53,6 +53,6 @@ type Query {
   user(id: Int!): User!
   decks: [Deck!]!
   words: [Word!]!
-  deckWords: [DeckWord!]!
-  deckWord(id: Int!): DeckWord!
+  deckwords: [DeckWord!]!
+  deckword(id: Int!): DeckWord!
 }
