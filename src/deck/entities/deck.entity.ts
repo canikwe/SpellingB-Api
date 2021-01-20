@@ -1,5 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { User } from 'src/user/entities/user.entity';
+import { User } from 'src/users/entities/user.entity';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { CommonEntity } from 'src/_base/entities/common.entity';
 import { DeckWord } from 'src/deck-words/entities/deck-word.entity';

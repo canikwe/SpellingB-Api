@@ -1,5 +1,5 @@
-import { CreateUserInput } from 'src/user/dto/create-user.input';
-import { User } from 'src/user/entities/user.entity';
+import { CreateUserInput } from 'src/users/dto/create-user.input';
+import { User } from 'src/users/entities/user.entity';
 import { getRepository } from 'typeorm';
 const faker = require('faker');
 

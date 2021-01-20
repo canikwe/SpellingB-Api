@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
+import { UserModule } from './users/user.module';
 import { WordModule } from './words/word.module';
 import { DeckModule } from './deck/deck.module';
 import { DeckWordsModule } from './deck-words/deck-words.module';

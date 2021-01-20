@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import { Deck } from 'src/deck/entities/deck.entity';
-import { User } from '../src/user/entities/user.entity';
+import { User } from '../src/users/entities/user.entity';
 import { CreateDeckInput } from '../src/deck/dto/create-deck.input';
 const faker = require('faker');
 
