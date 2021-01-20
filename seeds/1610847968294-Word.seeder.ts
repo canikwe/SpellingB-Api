@@ -1,6 +1,6 @@
 import { Connection, getRepository } from 'typeorm';
-import { Word } from 'src/word/entities/word.entity';
-import { CreateWordInput } from '../src/word/dto/create-word.input';
+import { Word } from 'src/words/entities/word.entity';
+import { CreateWordInput } from '../src/words/dto/create-word.input';
 const faker = require('faker');
 
 /**
