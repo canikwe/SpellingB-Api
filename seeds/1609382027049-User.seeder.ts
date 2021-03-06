@@ -1,5 +1,5 @@
-import { CreateUserInput } from 'src/user/dto/create-user.input';
-import { User } from 'src/user/entities/user.entity';
+import { CreateUserInput } from 'src/users/dto/create-user.input';
+import { User } from 'src/users/entities/user.entity';
 import { getRepository } from 'typeorm';
 const faker = require('faker');
 
@@ -19,7 +19,7 @@ export default {
 };
 
 const buildUsers = (): CreateUserInput[] => {
-  return new Array(5).fill(undefined).reduce((acc: CreateUserInput[]) => {
+  return new Array(1).fill(undefined).reduce((acc: CreateUserInput[]) => {
     return acc.concat({
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
