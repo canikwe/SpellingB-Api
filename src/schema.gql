@@ -2,7 +2,7 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Users {
+type User {
   id: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -43,12 +43,12 @@ type Deck {
   updatedAt: DateTime!
   title: String!
   isPublic: Boolean!
-  user: Users!
+  user: User!
   userId: Int!
   deckWords: [DeckWord!]!
 }
 
 type Query {
-  users: [Users!]!
-  user(id: Int!): Users!
+  users: [User!]!
+  user(id: Int!): User!
 }

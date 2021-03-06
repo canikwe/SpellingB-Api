@@ -10,20 +10,20 @@ import {
 import { Deck } from 'src/decks/entities/deck.entity';
 import { DeckService } from 'src/decks/deck.service';
 import { UserService } from '../services/user.service';
-import { Users } from '../entities/user.entity';
+import { User } from '../entities/user.entity';
 
-@Resolver(Users)
+@Resolver(User)
 export class UserResolver {
   constructor(
     private readonly userService: UserService, // private readonly deckService: DeckService,
   ) {}
 
-  @Query(() => [Users])
+  @Query(() => [User])
   users() {
     return this.userService.findAll();
   }
 
-  @Query(() => Users)
+  @Query(() => User)
   user(@Args('id', { type: () => Int }) id: number) {
     return this.userService.findOne(id);
   }
