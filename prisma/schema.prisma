@@ -15,8 +15,8 @@ model DeckWords {
   order     Int
   wordId    Int
   deckId    Int
-  decks     Decks    @relation(fields: [deckId], references: [id])
-  words     Words    @relation(fields: [wordId], references: [id])
+  deck      Decks    @relation(fields: [deckId], references: [id])
+  word      Words    @relation(fields: [wordId], references: [id])
 }
 
 model Decks {
@@ -26,7 +26,7 @@ model Decks {
   title     String      @db.VarChar
   isPublic  Boolean
   userId    Int
-  users     Users       @relation(fields: [userId], references: [id])
+  user      Users       @relation(fields: [userId], references: [id])
   deckWords DeckWords[]
 }
 

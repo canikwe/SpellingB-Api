@@ -11,6 +11,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "migrate:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "migrate:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "repository": "npx ts-node utils/repository-cli/create-repository.cli.ts",
     "seed": "node dist/utils/run-seed.cli.js",
     "seed:new": "node dist/utils/create-seed.cli.js",
     "start": "nest start",

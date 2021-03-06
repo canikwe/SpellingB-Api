@@ -6,6 +6,7 @@ import { UserModule } from './users/user.module';
 import { GraphqlOptions } from './graphql.options';
 import { PrismaService } from './_base/services/prisma.service';
 import { SharedModule } from './_base/base.module';
+import { DeckModule } from './decks/deck.module';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { SharedModule } from './_base/base.module';
     }),
     UserModule,
     // WordModule,
-    // DeckModule,
+    DeckModule,
     // DeckWordsModule,
     SharedModule,
   ],

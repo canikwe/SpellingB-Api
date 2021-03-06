@@ -33,8 +33,8 @@ type Deck {
   updatedAt: DateTime!
   title: String!
   isPublic: Boolean!
-  user: User!
   userId: Int!
+  user: User!
   deckWords: [DeckWord!]!
 }
 
@@ -51,4 +51,6 @@ type User {
 type Query {
   users: [User!]!
   user(id: Int!): User!
+  decks: [Deck!]!
+  deck(id: Int!): Deck!
 }
