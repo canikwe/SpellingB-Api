@@ -1,6 +1,7 @@
 import { Type } from '@nestjs/common';
-import { Resolver, Query, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int, Mutation } from '@nestjs/graphql';
 import { BaseService } from '../base.service';
+import { CreateDeckInput } from '../../decks/dto/create-deck.input';
 
 export function BaseResolver<T extends Type<unknown>>(classRef: T): any {
   @Resolver({ isAbstract: true })
@@ -17,11 +18,11 @@ export function BaseResolver<T extends Type<unknown>>(classRef: T): any {
       return this._service.findOne(id);
     }
 
-    // @Mutation(() => Shared)
-    // createShared(
-    //   @Args('createSharedInput') createSharedInput: CreateSharedInput,
-    // ) {
-    //   return this._service.create(createSharedInput);
+    // @Mutation(() => classRef, {
+    //   name: `createOne${classRef.name.toLowerCase()}`,
+    // })
+    // createOne<T>(@Args(`create${classRef.name}Input`) createInput: T) {
+    // return this._service.create(createSharedInput);
     // }
 
     // @Mutation(() => Shared)

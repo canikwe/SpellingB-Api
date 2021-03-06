@@ -25,7 +25,7 @@ export default {
     const deckInserts = await buildDecks();
 
     /** Adds records to the Deck database table */
-    const result = await deckRepository.insert(deckInserts);
+    const result = await deckRepository.insert([]);
 
     /** Return the number of inserted table records */
     return result.generatedMaps.length;
@@ -39,11 +39,11 @@ export default {
 const buildDecks = async () => {
   const users = await getRepository(User).find();
 
-  return new Array(2).fill(undefined).reduce((acc: CreateDeckInput[]) => {
-    return acc.concat({
-      title: faker.random.words(3),
-      isPublic: faker.random.boolean(),
-      userId: users[0].id,
-    });
-  }, []);
+  // return new Array(2).fill(undefined).reduce((acc: CreateDeckInput[]) => {
+  //   return acc.concat({
+  //     title: faker.random.words(3),
+  //     isPublic: faker.random.boolean(),
+  //     userId: users[0].id,
+  //   });
+  // }, []);
 };

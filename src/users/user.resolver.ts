@@ -4,6 +4,7 @@ import { User } from './entities/user.entity';
 import { Deck } from 'src/decks/entities/deck.entity';
 import { DeckService } from 'src/decks/deck.service';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
+import { CreateUserInput } from './dto/create-user.input';
 
 @Resolver(() => User)
 export class UserResolver extends BaseResolver(User) {
@@ -13,6 +14,7 @@ export class UserResolver extends BaseResolver(User) {
   ) {
     super(userService);
   }
+
   @ResolveField((type) => [Deck], { name: 'decks' })
   async decks(@Parent() user: User): Promise<Deck[]> {
     const { id: userId } = user;

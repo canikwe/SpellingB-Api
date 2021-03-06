@@ -58,3 +58,12 @@ type Query {
   deckwords: [DeckWord!]!
   deckword(id: Int!): DeckWord!
 }
+
+type Mutation {
+  deck_createOne(createDeckInput: CreateDeckInput!): Deck!
+}
+
+input CreateDeckInput {
+  title: String!
+  isPublic: Boolean!
+}
