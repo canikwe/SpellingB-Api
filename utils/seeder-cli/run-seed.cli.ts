@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../src/app.module';
 import { Connection, getConnection } from 'typeorm';
 import { ISeeder } from './seeder.interface';
 import { clear } from 'console';
+import { AppModule } from 'src/app.module';
 const fs = require('fs');
 const path = require('path');
 const seedsFolder = './seeds/';
