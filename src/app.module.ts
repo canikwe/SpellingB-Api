@@ -1,26 +1,16 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './users/user.module';
-import { WordModule } from './words/word.module';
-import { DeckModule } from './decks/deck.module';
-import { DeckWordsModule } from './deck-words/deck-words.module';
-import { SharedModule } from './_base/base.module';
 import { GraphqlOptions } from './graphql.options';
 import { PrismaService } from './prisma.service';
 
 @Module({
   imports: [
-    // GraphQLModule.forRootAsync({
-    //   useClass: GraphqlOptions,
-    // }),
-    GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    GraphQLModule.forRootAsync({
+      useClass: GraphqlOptions,
     }),
-    // TypeOrmModule.forRoot(),
     UserModule,
     // WordModule,
     // DeckModule,
@@ -28,6 +18,6 @@ import { PrismaService } from './prisma.service';
     // SharedModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
