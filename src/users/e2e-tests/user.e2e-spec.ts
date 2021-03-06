@@ -1,7 +1,9 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
-import * as request from 'supertest';
+import { gql } from 'apollo-server-express';
+import { GqlTestRunner } from 'src/utils/gql-test-runner.utils';
+import { GraphQLErrorCode } from 'src/utils/gql-error-code.enum';
 
 describe('UserResolver (e2e)', () => {
   let app: INestApplication;
@@ -27,14 +29,14 @@ describe('UserResolver (e2e)', () => {
 
   describe('findAll()', () => {
     it('should return some users', async () => {
-      return request(app.getHttpServer())
-        .post('/graphql')
-        .send({ operationName: null, query: '{users{id}}' })
-        .expect(({ body }) => {
-          const data = body.data.users;
-          expect(data.length).toBeGreaterThan(0);
-          console.log(data);
-        });
+      const query = gql`
+        query {
+          users {
+            id
+          }
+        }
+      `;
+      GqlTestRunner.sendGqlRequest(app.getHttpServer(), query);
     });
   });
 });
