@@ -4,7 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './users/user.module';
 import { GraphqlOptions } from './graphql.options';
-import { PrismaService } from './prisma.service';
+import { PrismaService } from './_base/services/prisma.service';
+import { SharedModule } from './_base/base.module';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { PrismaService } from './prisma.service';
     // WordModule,
     // DeckModule,
     // DeckWordsModule,
-    // SharedModule,
+    SharedModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],

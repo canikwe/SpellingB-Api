@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserResolver } from './resolvers/user.resolver';
 import { UserService } from './services/user.service';
 import { UsersRepository } from './repositories/user.repository';
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../_base/services/prisma.service';
 
 @Module({
   imports: [],
