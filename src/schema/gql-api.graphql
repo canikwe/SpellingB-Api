@@ -1,0 +1,20 @@
+type User {
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  firstName: String!
+  lastName: String!
+  email: String!
+  # decks: [Deck!]!
+}
+
+type Query {
+  users: [User!]!
+  user(id: Int!): User!
+  # decks: [Deck!]!
+  # deck(id: Int!): Deck!
+  # words: [Word!]!
+  # word(id: Int!): Word!
+  # deckwords: [DeckWord!]!
+  # deckword(id: Int!): DeckWord!
+}

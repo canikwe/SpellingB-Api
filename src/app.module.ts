@@ -9,18 +9,24 @@ import { WordModule } from './words/word.module';
 import { DeckModule } from './decks/deck.module';
 import { DeckWordsModule } from './deck-words/deck-words.module';
 import { SharedModule } from './_base/base.module';
+import { PrismaModule } from './_prisma/prisma.module';
+import { GraphqlOptions } from './graphql.options';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    GraphQLModule.forRootAsync({
+      useClass: GraphqlOptions,
     }),
-    TypeOrmModule.forRoot(),
+    // GraphQLModule.forRoot({
+    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    // }),
+    // TypeOrmModule.forRoot(),
+    PrismaModule,
     UserModule,
-    WordModule,
+    // WordModule,
     DeckModule,
-    DeckWordsModule,
-    SharedModule,
+    // DeckWordsModule,
+    // SharedModule,
   ],
   controllers: [AppController],
   providers: [AppService],

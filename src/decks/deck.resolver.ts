@@ -8,10 +8,10 @@ import {
 import { DeckService } from './deck.service';
 import { Deck } from './entities/deck.entity';
 import { User } from '../users/entities/user.entity';
-import { UserService } from '../users/user.service';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { CreateDeckInput } from './dto/create-deck.input';
 import { UpdateDeckInput } from './dto/update-deck.input';
+import { UserService } from 'src/users/services/user.service';
 
 @Resolver(() => Deck)
 export class DeckResolver extends BaseResolver(Deck) {

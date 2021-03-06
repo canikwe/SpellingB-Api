@@ -20,5 +20,5 @@ export class User extends CommonEntity {
 
   @Field((type) => [Deck])
   @OneToMany((type) => Deck, (deck) => deck.user)
-  decks: Deck[];
+  decks?: Deck[];
 }

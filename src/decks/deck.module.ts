@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Deck } from './entities/deck.entity';
 
 @Module({
-  imports: [forwardRef(() => UserModule), TypeOrmModule.forFeature([Deck])],
+  imports: [forwardRef(() => UserModule), DeckModule],
   providers: [DeckResolver, DeckService],
   exports: [DeckService],
 })
