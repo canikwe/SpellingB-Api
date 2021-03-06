@@ -1,0 +1,67 @@
+-- CreateTable
+CREATE TABLE "DeckWords" (
+    "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "starred" BOOLEAN NOT NULL,
+    "order" INTEGER NOT NULL,
+    "wordId" INTEGER NOT NULL,
+    "deckId" INTEGER NOT NULL,
+
+    PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Decks" (
+    "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "title" VARCHAR NOT NULL,
+    "isPublic" BOOLEAN NOT NULL,
+    "userId" INTEGER NOT NULL,
+
+    PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Users" (
+    "id" SERIAL NOT NULL,
+    "firstName" VARCHAR(255) NOT NULL,
+    "lastName" VARCHAR(255) NOT NULL,
+    "email" VARCHAR(255) NOT NULL,
+    "createdAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Words" (
+    "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "name" VARCHAR NOT NULL,
+
+    PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "migrations" (
+    "id" SERIAL NOT NULL,
+    "timestamp" BIGINT NOT NULL,
+    "name" VARCHAR NOT NULL,
+
+    PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Words.name_unique" ON "Words"("name");
+
+-- AddForeignKey
+ALTER TABLE "DeckWords" ADD FOREIGN KEY ("deckId") REFERENCES "Decks"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "DeckWords" ADD FOREIGN KEY ("wordId") REFERENCES "Words"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Decks" ADD FOREIGN KEY ("userId") REFERENCES "Users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
