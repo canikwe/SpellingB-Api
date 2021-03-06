@@ -1,5 +1,5 @@
 import { CreateUserInput } from 'src/users/dto/create-user.input';
-import { User } from 'src/users/entities/user.entity';
+import { Users } from 'src/users/entities/user.entity';
 import { getRepository } from 'typeorm';
 const faker = require('faker');
 
@@ -7,14 +7,14 @@ export default {
   name: 'User',
   timeStamp: 1609382027049,
   up: async () => {
-    const userRepo = getRepository(User);
+    const userRepo = getRepository(Users);
     const userInserts = buildUsers();
     const result = await userRepo.insert(userInserts);
 
     return result.generatedMaps.length;
   },
   down: async () => {
-    await getRepository(User).delete({});
+    await getRepository(Users).delete({});
   },
 };
 

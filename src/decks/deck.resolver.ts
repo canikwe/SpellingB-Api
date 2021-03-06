@@ -7,7 +7,7 @@ import {
 } from '@nestjs/graphql';
 import { DeckService } from './deck.service';
 import { Deck } from './entities/deck.entity';
-import { User } from '../users/entities/user.entity';
+import { Users } from '../users/entities/user.entity';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { CreateDeckInput } from './dto/create-deck.input';
 import { UpdateDeckInput } from './dto/update-deck.input';
@@ -29,8 +29,8 @@ export class DeckResolver extends BaseResolver(Deck) {
     // return this.deckService.createOne(createInput);
   }
 
-  @ResolveField((type) => [User], { name: 'user' })
-  async user(@Parent() deck: Deck): Promise<User> {
+  @ResolveField((type) => [Users], { name: 'user' })
+  async user(@Parent() deck: Deck): Promise<Users> {
     const { userId } = deck;
     return this.userService.findOne(userId);
   }

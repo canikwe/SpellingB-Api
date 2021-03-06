@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Users } from '@prisma/client';
 import { Repository } from 'typeorm';
-import { User } from '../entities/user.entity';
+import { Users } from '../entities/user.entity';
 import { UsersRepository } from '../repositories/user.repository';
 
 @Injectable()

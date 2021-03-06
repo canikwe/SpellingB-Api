@@ -1,5 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { User } from 'src/users/entities/user.entity';
+import { Users } from 'src/users/entities/user.entity';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { CommonEntity } from 'src/_base/entities/common.entity';
 import { DeckWord } from 'src/deck-words/entities/deck-word.entity';
@@ -15,9 +15,9 @@ export class Deck extends CommonEntity {
   @Column()
   isPublic: boolean;
 
-  @Field((type) => User)
-  @ManyToOne((type) => User, (user) => user.decks)
-  user: User;
+  @Field((type) => Users)
+  @ManyToOne((type) => Users, (user) => user.decks)
+  user: Users;
 
   @Field((type) => Int)
   @Column('int')

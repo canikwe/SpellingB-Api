@@ -26,7 +26,7 @@ model Decks {
   title     String      @db.VarChar
   isPublic  Boolean
   userId    Int
-  Users     Users       @relation(fields: [userId], references: [id])
+  // Users     Users       @relation(fields: [userId], references: [id])
   DeckWords DeckWords[]
 }
 
@@ -37,7 +37,7 @@ model Users {
   email     String   @db.VarChar(255)
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @default(now()) @db.Timestamp(6)
-  Decks     Decks[]
+  // Decks     Decks[]
 }
 
 model Words {

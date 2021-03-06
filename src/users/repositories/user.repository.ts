@@ -1,8 +1,10 @@
-import { Users, Prisma } from '@prisma/client';
-import { PrismaService } from 'src/_prisma/prisma.service';
+import { Inject } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { PrismaService } from 'src/prisma.service';
+import { Users } from '../entities/user.entity';
 
 export class UsersRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(@Inject(PrismaService) private prisma: PrismaService) {}
 
   async find(): Promise<Users[]> {
     return this.prisma.users.findMany();

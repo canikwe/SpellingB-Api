@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import { Deck } from 'src/decks/entities/deck.entity';
-import { User } from '../src/users/entities/user.entity';
+import { Users } from '../src/users/entities/user.entity';
 import { CreateDeckInput } from '../src/decks/dto/create-deck.input';
 const faker = require('faker');
 
@@ -37,7 +37,7 @@ export default {
 };
 
 const buildDecks = async () => {
-  const users = await getRepository(User).find();
+  const users = await getRepository(Users).find();
 
   // return new Array(2).fill(undefined).reduce((acc: CreateDeckInput[]) => {
   //   return acc.concat({

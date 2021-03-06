@@ -2,6 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Users {
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  firstName: String!
+  lastName: String!
+  email: String!
+  decks: [Deck!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Word {
   id: Int!
   createdAt: DateTime!
@@ -9,11 +24,6 @@ type Word {
   name: String!
   deckWords: [DeckWord!]!
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type DeckWord {
   id: Int!
@@ -33,37 +43,12 @@ type Deck {
   updatedAt: DateTime!
   title: String!
   isPublic: Boolean!
-  user: User!
+  user: Users!
   userId: Int!
   deckWords: [DeckWord!]!
 }
 
-type User {
-  id: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  firstName: String!
-  lastName: String!
-  email: String!
-  decks: [Deck!]!
-}
-
 type Query {
-  users: [User!]!
-  user(id: Int!): User!
-  decks: [Deck!]!
-  deck(id: Int!): Deck!
-  words: [Word!]!
-  word(id: Int!): Word!
-  deckwords: [DeckWord!]!
-  deckword(id: Int!): DeckWord!
-}
-
-type Mutation {
-  deck_createOne(createDeckInput: CreateDeckInput!): Deck!
-}
-
-input CreateDeckInput {
-  title: String!
-  isPublic: Boolean!
+  users: [Users!]!
+  user(id: Int!): Users!
 }

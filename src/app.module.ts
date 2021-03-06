@@ -9,22 +9,21 @@ import { WordModule } from './words/word.module';
 import { DeckModule } from './decks/deck.module';
 import { DeckWordsModule } from './deck-words/deck-words.module';
 import { SharedModule } from './_base/base.module';
-import { PrismaModule } from './_prisma/prisma.module';
 import { GraphqlOptions } from './graphql.options';
+import { PrismaService } from './prisma.service';
 
 @Module({
   imports: [
-    GraphQLModule.forRootAsync({
-      useClass: GraphqlOptions,
-    }),
-    // GraphQLModule.forRoot({
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    // GraphQLModule.forRootAsync({
+    //   useClass: GraphqlOptions,
     // }),
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
     // TypeOrmModule.forRoot(),
-    PrismaModule,
     UserModule,
     // WordModule,
-    DeckModule,
+    // DeckModule,
     // DeckWordsModule,
     // SharedModule,
   ],

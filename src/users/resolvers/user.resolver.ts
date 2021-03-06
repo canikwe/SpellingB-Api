@@ -10,28 +10,27 @@ import {
 import { Deck } from 'src/decks/entities/deck.entity';
 import { DeckService } from 'src/decks/deck.service';
 import { UserService } from '../services/user.service';
-import { Users } from '@prisma/client';
+import { Users } from '../entities/user.entity';
 
-@Resolver('Users')
+@Resolver(Users)
 export class UserResolver {
   constructor(
-    private readonly userService: UserService,
-    private readonly deckService: DeckService,
+    private readonly userService: UserService, // private readonly deckService: DeckService,
   ) {}
 
-  @Query()
+  @Query(() => [Users])
   users() {
     return this.userService.findAll();
   }
 
-  @Query()
+  @Query(() => Users)
   user(@Args('id', { type: () => Int }) id: number) {
     return this.userService.findOne(id);
   }
 
-  @ResolveField((type) => [Deck], { name: 'decks' })
-  async decks(@Parent() user: Users): Promise<Deck[]> {
-    const { id: userId } = user;
-    return this.deckService.findAll({ where: { userId } });
-  }
+  // @ResolveField((type) => [Deck], { name: 'decks' })
+  // async decks(@Parent() user: Users): Promise<Deck[]> {
+  //   const { id: userId } = user;
+  //   return this.deckService.findAll({ where: { userId } });
+  // }
 }

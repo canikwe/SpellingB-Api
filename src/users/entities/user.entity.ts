@@ -4,8 +4,8 @@ import { CommonEntity } from 'src/_base/entities/common.entity';
 import { Column, Entity, OneToMany } from 'typeorm';
 
 @ObjectType()
-@Entity('Users')
-export class User extends CommonEntity {
+// @Entity('Users')
+export class Users extends CommonEntity {
   @Field()
   @Column({ type: 'varchar', length: 255 })
   firstName: string;
