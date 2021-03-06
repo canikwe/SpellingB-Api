@@ -21,10 +21,10 @@ type DeckWord {
   updatedAt: DateTime!
   starred: Boolean!
   order: Int!
-  word: Word!
   wordId: Int!
-  deck: Deck!
   deckId: Int!
+  word: Word!
+  deck: Deck!
 }
 
 type Deck {
@@ -55,4 +55,6 @@ type Query {
   deck(id: Int!): Deck!
   words: [Word!]!
   word(id: Int!): Word!
+  deckWords: [DeckWord!]!
+  deckWord(id: Int!): DeckWord!
 }

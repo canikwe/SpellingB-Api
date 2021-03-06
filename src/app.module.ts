@@ -8,6 +8,7 @@ import { PrismaService } from './_base/services/prisma.service';
 import { SharedModule } from './_base/base.module';
 import { DeckModule } from './decks/deck.module';
 import { WordModule } from './words/word.module';
+import { DeckWordsModule } from './deck-words/deck-words.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { WordModule } from './words/word.module';
     UserModule,
     WordModule,
     DeckModule,
-    // DeckWordsModule,
+    DeckWordsModule,
     SharedModule,
   ],
   controllers: [AppController],
