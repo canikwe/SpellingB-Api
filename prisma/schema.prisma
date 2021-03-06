@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model DeckWords {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @default(now()) @db.Timestamp(6)
+  starred   Boolean
+  order     Int
+  wordId    Int
+  deckId    Int
+  Decks     Decks    @relation(fields: [deckId], references: [id])
+  Words     Words    @relation(fields: [wordId], references: [id])
+}
+
+model Decks {
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now()) @db.Timestamp(6)
+  updatedAt DateTime    @default(now()) @db.Timestamp(6)
+  title     String      @db.VarChar
+  isPublic  Boolean
+  userId    Int
+  Users     Users       @relation(fields: [userId], references: [id])
+  DeckWords DeckWords[]
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  firstName String   @db.VarChar(255)
+  lastName  String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @default(now()) @db.Timestamp(6)
+  Decks     Decks[]
+}
+
+model Words {
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now()) @db.Timestamp(6)
+  updatedAt DateTime    @default(now()) @db.Timestamp(6)
+  name      String      @unique @db.VarChar
+  DeckWords DeckWords[]
+}
+
+model migrations {
+  id        Int    @id @default(autoincrement())
+  timestamp BigInt
+  name      String @db.VarChar
+}
