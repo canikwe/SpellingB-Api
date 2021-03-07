@@ -34,3 +34,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run unit tests
         run: npm test
+        
+      - name: Run coverage report
+        run: npm run test:cov
