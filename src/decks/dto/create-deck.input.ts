@@ -15,7 +15,7 @@ import { Deck } from '../entities/deck.entity';
 @InputType()
 export class CreateDeckInput extends PickType(
   Deck,
-  ['title', 'isPublic'],
+  ['title', 'isPublic', 'userId'],
   InputType,
 ) {
   // @Field()

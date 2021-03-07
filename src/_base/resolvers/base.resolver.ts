@@ -1,19 +1,19 @@
 import { Type } from '@nestjs/common';
-import { Resolver, Query, Args, Int, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { BaseService } from '../base.service';
-import { CreateDeckInput } from '../../decks/dto/create-deck.input';
+import { camelCase } from 'lodash';
 
 export function BaseResolver<T extends Type<unknown>>(classRef: T): any {
   @Resolver({ isAbstract: true })
   abstract class CommonResolverHost {
     constructor(protected readonly _service: BaseService) {}
 
-    @Query(() => [classRef], { name: `${classRef.name.toLowerCase()}s` })
+    @Query(() => [classRef], { name: `${camelCase(classRef.name)}s` })
     findAll() {
       return this._service.findAll();
     }
 
-    @Query(() => classRef, { name: `${classRef.name.toLowerCase()}` })
+    @Query(() => classRef, { name: `${camelCase(classRef.name)}` })
     findOne(@Args('id', { type: () => Int }) id: number) {
       return this._service.findOne(id);
     }

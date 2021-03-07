@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { WordService } from './word.service';
-import { WordResolver } from './word.resolver';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Word } from './entities/word.entity';
+import { PrismaService } from '../_base/services/prisma.service';
+import { WordRepository } from './repositories/word.repository';
+import { WordResolver } from './resolvers/word.resolver';
+import { WordService } from './services/word.service';
 
 @Module({
-  providers: [WordResolver, WordService],
-  imports: [TypeOrmModule.forFeature([Word])],
+  providers: [WordResolver, WordService, WordRepository, PrismaService],
+  imports: [],
 })
 export class WordModule {}
