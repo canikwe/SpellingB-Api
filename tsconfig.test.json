@@ -4,5 +4,5 @@
     "outDir": "dist-test"
   },
   "include": ["src", "test"],
-  "exclude": ["dist-test"]
+  "exclude": ["dist-test"],
 }

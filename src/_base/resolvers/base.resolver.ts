@@ -1,7 +1,7 @@
 import { Type } from '@nestjs/common';
 import { Resolver, Query, Args, Int } from '@nestjs/graphql';
-import { BaseService } from '../base.service';
 import { camelCase } from 'lodash';
+import { BaseService } from '../_types/base-service.type';
 
 export function BaseResolver<T extends Type<unknown>>(classRef: T): any {
   @Resolver({ isAbstract: true })
