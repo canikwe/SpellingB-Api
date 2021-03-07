@@ -2,8 +2,8 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
 import { gql } from 'apollo-server-express';
-import { GqlTestRunner } from 'src/utils/gql-test-runner.utils';
 import { DeckWord } from '../entities/deck-word.entity';
+import { GqlTestRunner } from 'src/utils/e2e-tests';
 
 describe('DeckWordResolver (e2e)', () => {
   let app: INestApplication;
