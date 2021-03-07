@@ -1,6 +1,5 @@
 import { Resolver } from '@nestjs/graphql';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
-import { UserService } from 'src/users/services/user.service';
 import { CreateDeckInput } from '../dto/create-deck.input';
 import { UpdateDeckInput } from '../dto/update-deck.input';
 import { Deck } from '../entities/deck.entity';
@@ -8,10 +7,7 @@ import { DeckService } from '../services/deck.service';
 
 @Resolver(() => Deck)
 export class DeckResolver extends BaseResolver(Deck) {
-  constructor(
-    private readonly deckService: DeckService,
-    private readonly userService: UserService,
-  ) {
+  constructor(private readonly deckService: DeckService) {
     super(deckService, CreateDeckInput, UpdateDeckInput);
   }
 
