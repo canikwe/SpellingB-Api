@@ -1,12 +1,17 @@
 import { Module } from '@nestjs/common';
-import { DeckWordsService } from './deck-words.service';
-import { DeckWordsResolver } from './deck-words.resolver';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DeckWord } from './entities/deck-word.entity';
+import { DeckWordRepository } from './repositories/deck-word.repository';
+import { PrismaService } from '../_base/services/prisma.service';
+import { DeckWordsResolver } from './resolvers/deck-words.resolver';
+import { DeckWordsService } from './services/deck-words.service';
 
 @Module({
-  providers: [DeckWordsResolver, DeckWordsService],
-  imports: [TypeOrmModule.forFeature([DeckWord])],
-  exports: [TypeOrmModule],
+  providers: [
+    DeckWordsResolver,
+    DeckWordsService,
+    DeckWordRepository,
+    PrismaService,
+  ],
+  imports: [],
+  exports: [],
 })
 export class DeckWordsModule {}
