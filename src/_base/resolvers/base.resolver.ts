@@ -17,25 +17,6 @@ export function BaseResolver<T extends Type<unknown>>(classRef: T): any {
     findOne(@Args('id', { type: () => Int }) id: number) {
       return this._service.findOne(id);
     }
-
-    // @Mutation(() => classRef, {
-    //   name: `createOne${classRef.name.toLowerCase()}`,
-    // })
-    // createOne<T>(@Args(`create${classRef.name}Input`) createInput: T) {
-    // return this._service.create(createSharedInput);
-    // }
-
-    // @Mutation(() => Shared)
-    // updateShared(
-    //   @Args('updateSharedInput') updateSharedInput: UpdateSharedInput,
-    // ) {
-    //   return this._service.update(updateSharedInput.id, updateSharedInput);
-    // }
-
-    // @Mutation(() => Shared)
-    // removeShared(@Args('id', { type: () => Int }) id: number) {
-    //   return this._service.remove(id);
-    // }
   }
 
   return CommonResolverHost;

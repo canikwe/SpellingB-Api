@@ -5,4 +5,4 @@ import { BaseService } from './_types/base-service.type';
 @Module({
   providers: [BaseService, PrismaService],
 })
-export class SharedModule {}
+export class BaseModule {}

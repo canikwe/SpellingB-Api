@@ -1,9 +1,9 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Deck } from 'src/decks/entities/deck.entity';
-import { CommonEntity } from 'src/_base/entities/common.entity';
+import { BaseEntity } from 'src/_base/entities/base.entity';
 
 @ObjectType()
-export class User extends CommonEntity {
+export class User extends BaseEntity {
   @Field()
   firstName: string;
 
