@@ -1,10 +1,10 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Word } from '../../words/entities/word.entity';
 import { Deck } from '../../decks/entities/deck.entity';
-import { CommonEntity } from '../../_base/entities/common.entity';
+import { BaseEntity } from '../../_base/entities/base.entity';
 
 @ObjectType()
-export class DeckWord extends CommonEntity {
+export class DeckWord extends BaseEntity {
   @Field()
   starred: boolean;
 

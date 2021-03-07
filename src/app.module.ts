@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { UserModule } from './users/user.module';
 import { GraphqlOptions } from './graphql.options';
 import { PrismaService } from './_base/services/prisma.service';
-import { SharedModule } from './_base/base.module';
+import { BaseModule } from './_base/base.module';
 import { DeckModule } from './decks/deck.module';
 import { WordModule } from './words/word.module';
 import { DeckWordsModule } from './deck-words/deck-words.module';
@@ -19,7 +19,7 @@ import { DeckWordsModule } from './deck-words/deck-words.module';
     WordModule,
     DeckModule,
     DeckWordsModule,
-    SharedModule,
+    BaseModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
