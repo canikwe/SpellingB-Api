@@ -1,13 +1,13 @@
 import { forwardRef, Module } from '@nestjs/common';
-import { DeckService } from './deck.service';
-import { DeckResolver } from './deck.resolver';
 import { UserModule } from '../users/user.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Deck } from './entities/deck.entity';
+import { DeckResolver } from './resolvers/deck.resolver';
+import { DeckService } from './services/deck.service';
+import { DeckRepository } from './repositories/deck.repository';
+import { PrismaService } from '../_base/services/prisma.service';
 
 @Module({
-  imports: [forwardRef(() => UserModule), TypeOrmModule.forFeature([Deck])],
-  providers: [DeckResolver, DeckService],
+  imports: [forwardRef(() => UserModule)],
+  providers: [DeckResolver, DeckService, DeckRepository, PrismaService],
   exports: [DeckService],
 })
 export class DeckModule {}
