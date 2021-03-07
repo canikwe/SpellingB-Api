@@ -1,6 +1,4 @@
-import { forwardRef, Module } from '@nestjs/common';
-import { DeckModule } from '../decks/deck.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from '@nestjs/common';
 import { UserResolver } from './resolvers/user.resolver';
 import { UserService } from './services/user.service';
 import { UsersRepository } from './repositories/user.repository';
