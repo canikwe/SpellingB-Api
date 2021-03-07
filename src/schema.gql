@@ -21,10 +21,10 @@ type DeckWord {
   updatedAt: DateTime!
   starred: Boolean!
   order: Int!
-  wordId: Int!
-  deckId: Int!
   word: Word!
+  wordId: Int!
   deck: Deck!
+  deckId: Int!
 }
 
 type Deck {
@@ -33,8 +33,8 @@ type Deck {
   updatedAt: DateTime!
   title: String!
   isPublic: Boolean!
-  userId: Int!
   user: User!
+  userId: Int!
   deckWords: [DeckWord!]!
 }
 
@@ -55,6 +55,15 @@ type Query {
   deck(id: Int!): Deck!
   words: [Word!]!
   word(id: Int!): Word!
-  deckWords: [DeckWord!]!
-  deckWord(id: Int!): DeckWord!
+  deckwords: [DeckWord!]!
+  deckword(id: Int!): DeckWord!
+}
+
+type Mutation {
+  deck_createOne(createDeckInput: CreateDeckInput!): Deck!
+}
+
+input CreateDeckInput {
+  title: String!
+  isPublic: Boolean!
 }

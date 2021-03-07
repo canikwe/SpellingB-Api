@@ -1,12 +1,13 @@
-import { Module } from '@nestjs/common';
-import { UserResolver } from './resolvers/user.resolver';
-import { UserService } from './services/user.service';
-import { UsersRepository } from './repositories/user.repository';
-import { PrismaService } from '../_base/services/prisma.service';
+import { forwardRef, Module } from '@nestjs/common';
+import { UserService } from './user.service';
+import { UserResolver } from './user.resolver';
+import { DeckModule } from '../decks/deck.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
 
 @Module({
-  imports: [],
-  providers: [UserResolver, UserService, UsersRepository, PrismaService],
+  imports: [forwardRef(() => DeckModule), TypeOrmModule.forFeature([User])],
+  providers: [UserResolver, UserService],
   exports: [UserService],
 })
 export class UserModule {}
