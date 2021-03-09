@@ -1,13 +1,7 @@
-import { Field, ObjectType, Int } from '@nestjs/graphql';
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
-export abstract class BaseEntity {
-  @Field(() => Int)
-  id: number;
-
-  @Field(() => Date)
-  createdAt: Date;
-
-  @Field(() => Date)
-  updatedAt: Date;
+export class Base {
+  @Field(() => Int, { description: 'Example field (placeholder)' })
+  exampleField: number;
 }

@@ -1,4 +1,5 @@
 export class BaseService {
-  findOne: (args) => any;
-  findAll: () => any;
+  findOne(...args) {}
+
+  findAll() {}
 }
