@@ -1,6 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { User } from 'src/users/entities/user.entity';
-import { BaseEntity } from 'src/_base/entities/base.entity';
+import { BaseEntity } from 'src/_base/entities/common.entity';
 import { DeckWord } from 'src/deck-words/entities/deck-word.entity';
 
 @ObjectType()

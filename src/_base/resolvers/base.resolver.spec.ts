@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BaseService } from '../_types/base-service.type';
+import { BaseService } from '../services/base.service';
 import { BaseResolver } from './base.resolver';
 import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class';
 import { Spy } from 'src/utils/unit-tests/spy.type';
