@@ -1,38 +1,45 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { BaseService } from '../services/base.service';
 import { BaseResolver } from './base.resolver';
-import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class';
-import { Spy } from 'src/utils/unit-tests/spy.type';
 
 describe('BaseResolver', () => {
-  let resolver: mockResolver;
-  let serviceSpy: Spy<BaseService>;
+  let resolver: { findOne: (id: number) => any; findAll: () => any[] };
 
+  const serviceSpy: Partial<BaseService> = {
+    findAll: jest.fn().mockReturnValue([{}]),
+    findOne: jest.fn().mockReturnValue({}),
+  };
   class mockClass {
-    name: 'My Awesome Class Name';
+    name = 'My Awesome Class Name';
   }
 
-  class mockResolver extends BaseResolver(mockClass) {
-    constructor() {
-      super(createSpyFromClass(BaseService));
-    }
-  }
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        mockResolver,
-        { provide: BaseService, useValue: createSpyFromClass(BaseService) },
-      ],
-    }).compile();
-
-    resolver = module.get(mockResolver);
-    serviceSpy = module.get(BaseService);
+  beforeEach(() => {
+    const base = BaseResolver(mockClass);
+    resolver = new base(serviceSpy);
   });
 
-  it('should be defined', () => {
-    console.log(resolver);
-    console.log(serviceSpy);
-    expect(resolver).toBeDefined();
+  describe('Initialization', () => {
+    it('should be defined', () => {
+      expect(resolver).toBeDefined();
+    });
+  });
+
+  describe('findAll()', () => {
+    let result: any[];
+
+    it('should return the list of entities', () => {
+      result = resolver.findAll();
+
+      expect(result.length).toBe(1);
+    });
+  });
+
+  describe('findOne()', () => {
+    let result: any[];
+
+    it('should return the list of entities', () => {
+      result = resolver.findOne(1);
+
+      expect(result).toEqual({});
+    });
   });
 });
