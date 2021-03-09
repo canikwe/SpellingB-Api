@@ -10,7 +10,7 @@ export class UserResolver extends BaseResolver(User) {
     private readonly baseService: BaseService,
     private readonly userService: UserService,
   ) {
-    super(baseService, 'users');
+    super(baseService);
   }
 
   // @ResolveField((type) => [Deck], { name: 'decks' })
