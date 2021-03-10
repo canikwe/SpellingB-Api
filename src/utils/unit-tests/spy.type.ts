@@ -1,3 +1,3 @@
-export class Spy<T> {
-  [key: string]: jest.Mock<any, any>;
-}
+export type Spy<T> = {
+  [P in keyof T]: jest.Mock<any, any>;
+};

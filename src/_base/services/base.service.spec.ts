@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PrismaService } from './prisma.service';
 import { BaseService } from './base.service';
 import { BaseRepository } from '../repositories/base.repository';
 import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class';
@@ -21,9 +20,7 @@ describe('PrismaService', () => {
     }).compile();
 
     service = module.get<BaseService>(BaseService);
-    repositorySpy = (<unknown>(
-      module.get(BaseRepository)
-    )) as Spy<BaseRepository>;
+    repositorySpy = module.get(BaseRepository);
   });
 
   describe('Initialization', () => {
@@ -33,27 +30,27 @@ describe('PrismaService', () => {
   });
 
   describe('findOne()', () => {
-    let result;
+    let result: any;
 
     beforeEach(() => {
-      spyOn(repositorySpy, 'findOne').and.returnValue({});
+      repositorySpy.findOne.mockResolvedValue({});
     });
 
-    it('should return a foo', () => {
-      result = service.findOne(1, 'foos');
+    it('should return a foo', async () => {
+      result = await service.findOne(1, 'foos');
       expect(result).toEqual({});
     });
   });
 
   describe('findAll()', () => {
-    let result;
+    let result: any[];
 
     beforeEach(() => {
-      spyOn(repositorySpy, 'find').and.returnValue([{}, {}]);
+      repositorySpy.find.mockResolvedValue([{}, {}]);
     });
 
-    it('should return a foo', () => {
-      result = service.findAll('foos');
+    it('should return a foo', async () => {
+      result = await service.findAll('foos');
       expect(result).toEqual([{}, {}]);
     });
   });
