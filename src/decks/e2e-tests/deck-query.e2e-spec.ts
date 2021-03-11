@@ -34,6 +34,9 @@ describe('DeckResolver (e2e)', () => {
         query {
           decks {
             id
+            user {
+              id
+            }
           }
         }
       `;
@@ -56,6 +59,9 @@ describe('DeckResolver (e2e)', () => {
         query {
           deck(id: ${deck?.id}) {
             id
+            user {
+              id
+            }
           }
         }
       `;

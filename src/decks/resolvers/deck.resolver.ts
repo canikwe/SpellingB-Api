@@ -1,26 +1,21 @@
-import { Resolver } from '@nestjs/graphql';
+import { Parent, ResolveField, Resolver } from '@nestjs/graphql';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
-import { CreateDeckInput } from '../dto/create-deck.input';
-import { UpdateDeckInput } from '../dto/update-deck.input';
+import { BaseService } from 'src/_base/services/base.service';
 import { Deck } from '../entities/deck.entity';
-import { DeckService } from '../services/deck.service';
+import { userLoader } from 'src/_data-loaders';
+import { User } from 'src/users/entities/user.entity';
 
 @Resolver(() => Deck)
 export class DeckResolver extends BaseResolver(Deck) {
-  constructor(private readonly deckService: DeckService) {
-    super(deckService, CreateDeckInput, UpdateDeckInput);
+  userLoader = userLoader;
+
+  constructor(private readonly baseService: BaseService) {
+    super(baseService);
   }
 
-  // @Mutation(() => Deck, {
-  //   name: 'deck_createOne',
-  // })
-  // createOne(@Args('createDeckInput') createInput: CreateDeckInput) {
-  //   // return this.deckService.createOne(createInput);
-  // }
-
-  // @ResolveField((type) => [User], { name: 'user' })
-  // async user(@Parent() deck: Deck): Promise<User> {
-  //   const { userId } = deck;
-  //   return this.userService.findOne(userId);
-  // }
+  @ResolveField(() => User)
+  async user(@Parent() deck: Deck): Promise<User> {
+    const { userId } = deck;
+    return this.userLoader.load(userId);
+  }
 }

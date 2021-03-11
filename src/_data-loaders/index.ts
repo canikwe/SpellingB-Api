@@ -1,2 +1,3 @@
 import { userDecksLoader } from './user-decks.loader';
-export { userDecksLoader };
+import { userLoader } from './user.loader';
+export { userDecksLoader, userLoader };
