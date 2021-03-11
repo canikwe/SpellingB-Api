@@ -1,15 +1,11 @@
 import { Resolver} from '@nestjs/graphql'; // prettier-ignore
-import { UserService } from '../services/user.service';
 import { User } from '../entities/user.entity';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { BaseService } from 'src/_base/services/base.service';
 
 @Resolver(User)
 export class UserResolver extends BaseResolver(User) {
-  constructor(
-    private readonly baseService: BaseService,
-    private readonly userService: UserService,
-  ) {
+  constructor(private readonly baseService: BaseService) {
     super(baseService);
   }
 

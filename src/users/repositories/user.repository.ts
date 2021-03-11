@@ -1,15 +1,5 @@
-import { Inject } from '@nestjs/common';
 import { PrismaService } from 'src/_base/services/prisma.service';
-import { User } from '../entities/user.entity';
 
 export class UserRepository {
-  constructor(@Inject(PrismaService) private prisma: PrismaService) {}
-
-  async find(): Promise<User[]> {
-    return this.prisma.users.findMany();
-  }
-
-  async findOne(id: number): Promise<User> {
-    return this.prisma.users.findFirst({ where: { id } });
-  }
+  constructor(private prisma: PrismaService) {}
 }
