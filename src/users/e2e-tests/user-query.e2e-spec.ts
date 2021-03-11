@@ -9,6 +9,10 @@ describe('UserResolver (e2e)', () => {
   let app: INestApplication;
   let firstUser: User;
 
+  // ==========================================================================
+  // CONFIG 🌈
+  // ==========================================================================
+
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule],
@@ -22,6 +26,10 @@ describe('UserResolver (e2e)', () => {
     await app.close();
   });
 
+  // ==========================================================================
+  // TESTS 🧪
+  // ==========================================================================
+
   describe('Initialization', () => {
     it('should be defined', () => {
       expect(app).toBeDefined();
@@ -30,17 +38,9 @@ describe('UserResolver (e2e)', () => {
 
   describe('findAll()', () => {
     it('should return an array of users', async () => {
-      const query = gql`
-        query {
-          users {
-            id
-          }
-        }
-      `;
-
       const res = await GqlTestRunner.sendGqlRequest(
         app.getHttpServer(),
-        query,
+        findAllQuery(),
       );
       const users = res.body?.data?.users;
       firstUser = users?.[0];
@@ -52,19 +52,44 @@ describe('UserResolver (e2e)', () => {
 
   describe('findOne()', () => {
     it('should return some users', async () => {
-      const query = gql`
-        query {
-          user(id: ${firstUser?.id}) {
-            id
-          }
-        }
-      `;
       const res = await GqlTestRunner.sendGqlRequest(
         app.getHttpServer(),
-        query,
+        findOneQuery(),
       );
 
       expect(res.body?.data?.user).toBeDefined();
     });
   });
+
+  // ==========================================================================
+  // HELPERS 🤙🏾
+  // ==========================================================================
+
+  const findAllQuery = () => {
+    return gql`
+      query {
+        users {
+          id
+
+          decks {
+            id
+          }
+        }
+      }
+    `;
+  };
+
+  const findOneQuery = () => {
+    return gql`
+        query {
+          user(id: ${firstUser?.id}) {
+            id
+
+            decks {
+              id
+            }
+          }
+        }
+      `;
+  };
 });
