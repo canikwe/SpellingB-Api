@@ -1,18 +1,19 @@
 import { BaseService } from '../services/base.service';
 import { BaseResolver } from './base.resolver';
+import { BaseResolverHostType } from '../types/base-resolver-host.type';
+import { Spy, createSpyFromClass } from 'src/utils/unit-tests';
 
 describe('BaseResolver', () => {
-  let resolver: { findOne: (id: number) => any; findAll: () => any[] };
-
-  const serviceSpy: Partial<BaseService> = {
-    findAll: jest.fn().mockReturnValue([{}]),
-    findOne: jest.fn().mockReturnValue({}),
-  };
+  let resolver: BaseResolverHostType;
+  let serviceSpy: Spy<BaseService>;
   class mockClass {
     name = 'My Awesome Class Name';
   }
 
   beforeEach(() => {
+    serviceSpy = (createSpyFromClass(
+      BaseService,
+    ) as unknown) as Spy<BaseService>;
     const base = BaseResolver(mockClass);
     resolver = new base(serviceSpy);
   });
@@ -24,9 +25,10 @@ describe('BaseResolver', () => {
   });
 
   describe('findAll()', () => {
-    let result: any[];
+    let result: unknown[];
 
     it('should return the list of entities', () => {
+      serviceSpy.findAll.mockReturnValue([{}]);
       result = resolver.findAll();
 
       expect(result.length).toBe(1);
@@ -34,12 +36,13 @@ describe('BaseResolver', () => {
   });
 
   describe('findOne()', () => {
-    let result: any[];
+    let result: unknown;
 
     it('should return the list of entities', () => {
+      serviceSpy.findOne.mockReturnValue({ id: 1 });
       result = resolver.findOne(1);
 
-      expect(result).toEqual({});
+      expect(result).toEqual({ id: 1 });
     });
   });
 });

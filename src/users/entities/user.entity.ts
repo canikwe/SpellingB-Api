@@ -16,7 +16,7 @@ export class User extends BaseEntity {
   @Field()
   email: string;
 
-  @Field((type) => [Deck])
+  @Field(() => [Deck])
   decks?: Deck[];
 }
 
