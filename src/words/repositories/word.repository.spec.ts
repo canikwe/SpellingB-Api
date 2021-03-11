@@ -12,7 +12,7 @@ describe('WordRepository', () => {
         WordRepository,
         {
           provide: PrismaService,
-          useValue: createPrismaSpy('words'),
+          useValue: createPrismaSpy(['words']),
         },
       ],
     }).compile();

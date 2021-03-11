@@ -12,7 +12,7 @@ describe('DeckRepository', () => {
         DeckRepository,
         {
           provide: PrismaService,
-          useValue: createPrismaSpy('decks'),
+          useValue: createPrismaSpy(['decks']),
         },
       ],
     }).compile();
