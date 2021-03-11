@@ -28,15 +28,15 @@ describe('DeckResolver (e2e)', () => {
     });
   });
 
-  xdescribe('findAll()', () => {
+  describe('findAll()', () => {
     it('should return an array of decks', async () => {
       const query = gql`
         query {
           decks {
             id
-          }
-          user {
-            id
+            user {
+              id
+            }
           }
         }
       `;
@@ -53,7 +53,7 @@ describe('DeckResolver (e2e)', () => {
     });
   });
 
-  xdescribe('findOne()', () => {
+  describe('findOne()', () => {
     it('should return a deck', async () => {
       const query = gql`
         query {
