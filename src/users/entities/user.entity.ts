@@ -1,6 +1,6 @@
 import { ObjectType, Field } from '@nestjs/graphql';
 import { Deck } from 'src/decks/entities/deck.entity';
-import { BaseEntity } from 'src/_base/entities/common.entity';
+import { BaseEntity } from 'src/_base/entities/base.entity';
 import * as Factory from 'factory.ts';
 import { baseFactory } from 'src/_base/entities/base.entity';
 const faker = require('faker');

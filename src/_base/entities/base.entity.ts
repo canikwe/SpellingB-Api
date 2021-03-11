@@ -1,11 +1,17 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Field, ObjectType, Int } from '@nestjs/graphql';
 import { Sync } from 'factory.ts';
 const faker = require('faker');
 
 @ObjectType()
-export class Base {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+export abstract class BaseEntity {
+  @Field(() => Int)
+  id: number;
+
+  @Field(() => Date)
+  createdAt: Date;
+
+  @Field(() => Date)
+  updatedAt: Date;
 }
 
 export const baseFactory = Sync.makeFactory({
