@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { User } from 'src/users/entities/user.entity';
 import { createSpyFromClass } from 'src/utils/unit-tests';
-import { DeckService } from '../services/deck.service';
 import { DeckResolver } from './deck.resolver';
+import { userFactory } from '../../users/entities/user.entity';
+import { Deck, deckFactory } from '../entities/deck.entity';
+import { BaseService } from '../../_base/services/base.service';
 
 describe('DeckResolver', () => {
   let resolver: DeckResolver;
@@ -11,8 +14,8 @@ describe('DeckResolver', () => {
       providers: [
         DeckResolver,
         {
-          provide: DeckService,
-          useValue: createSpyFromClass(DeckService),
+          provide: BaseService,
+          useValue: createSpyFromClass(BaseService),
         },
       ],
     }).compile();
@@ -20,7 +23,24 @@ describe('DeckResolver', () => {
     resolver = module.get<DeckResolver>(DeckResolver);
   });
 
-  it('should be defined', () => {
-    expect(resolver).toBeDefined();
+  describe('Initialization', () => {
+    it('should be defined', () => {
+      expect(resolver).toBeDefined();
+    });
+  });
+
+  describe('user()', () => {
+    let result: User;
+
+    beforeEach(async () => {
+      resolver.userLoader = {
+        load: jest.fn().mockReturnValue(userFactory.build()),
+      } as any;
+      result = await resolver.user(deckFactory.build() as Deck);
+    });
+
+    it('should return the user', () => {
+      expect(result).toBeDefined();
+    });
   });
 });

@@ -2,8 +2,8 @@ import { Parent, ResolveField, Resolver } from '@nestjs/graphql';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { BaseService } from 'src/_base/services/base.service';
 import { Deck } from '../entities/deck.entity';
-import { User } from 'src/graphql.schema.generated';
 import { userLoader } from 'src/_data-loaders';
+import { User } from 'src/users/entities/user.entity';
 
 @Resolver(() => Deck)
 export class DeckResolver extends BaseResolver(Deck) {
