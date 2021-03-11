@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WordResolver } from './word.resolver';
-import { WordService } from '../services/word.service';
 import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class';
+import { BaseService } from '../../_base/services/base.service';
 
 describe('WordResolver', () => {
   let resolver: WordResolver;
@@ -11,8 +11,8 @@ describe('WordResolver', () => {
       providers: [
         WordResolver,
         {
-          provide: WordService,
-          useValue: createSpyFromClass(WordService),
+          provide: BaseService,
+          useValue: createSpyFromClass(BaseService),
         },
       ],
     }).compile();
