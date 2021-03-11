@@ -11,13 +11,6 @@ export class DeckResolver extends BaseResolver(Deck) {
     super(deckService, CreateDeckInput, UpdateDeckInput);
   }
 
-  // @Mutation(() => Deck, {
-  //   name: 'deck_createOne',
-  // })
-  // createOne(@Args('createDeckInput') createInput: CreateDeckInput) {
-  //   // return this.deckService.createOne(createInput);
-  // }
-
   // @ResolveField((type) => [User], { name: 'user' })
   // async user(@Parent() deck: Deck): Promise<User> {
   //   const { userId } = deck;
