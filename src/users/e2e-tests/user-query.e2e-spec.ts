@@ -36,7 +36,7 @@ describe('UserResolver (e2e)', () => {
     });
   });
 
-  xdescribe('findAll()', () => {
+  describe('findAll()', () => {
     it('should return an array of users', async () => {
       const res = await GqlTestRunner.sendGqlRequest(
         app.getHttpServer(),
@@ -50,7 +50,7 @@ describe('UserResolver (e2e)', () => {
     });
   });
 
-  xdescribe('findOne()', () => {
+  describe('findOne()', () => {
     it('should return some users', async () => {
       const res = await GqlTestRunner.sendGqlRequest(
         app.getHttpServer(),
