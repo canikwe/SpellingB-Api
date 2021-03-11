@@ -13,13 +13,13 @@ export class Deck extends BaseEntity {
   @Field()
   isPublic: boolean;
 
-  @Field((type) => Int)
+  @Field(() => Int)
   userId: number;
 
-  @Field((type) => User)
+  @Field(() => User)
   user?: User;
 
-  @Field((type) => [DeckWord])
+  @Field(() => [DeckWord])
   deckWords?: DeckWord[];
 }
 
