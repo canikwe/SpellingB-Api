@@ -1,7 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Word } from '../../words/entities/word.entity';
 import { Deck } from '../../decks/entities/deck.entity';
-import { BaseEntity } from '../../_base/entities/common.entity';
+import { BaseEntity } from '../../_base/entities/base.entity';
 
 @ObjectType()
 export class DeckWord extends BaseEntity {
