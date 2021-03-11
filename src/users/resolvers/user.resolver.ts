@@ -8,6 +8,8 @@ import { userDecksLoader } from 'src/_data-loaders';
 
 @Resolver(User)
 export class UserResolver extends BaseResolver(User) {
+  userDecksLoader = userDecksLoader;
+
   constructor(private readonly baseService: BaseService) {
     super(baseService);
   }
@@ -15,6 +17,6 @@ export class UserResolver extends BaseResolver(User) {
   @ResolveField((type) => [Deck], { name: 'decks' })
   async decks(@Parent() user: Users): Promise<Deck[]> {
     const { id: userId } = user;
-    return userDecksLoader.load(userId);
+    return this.userDecksLoader.load(userId);
   }
 }
