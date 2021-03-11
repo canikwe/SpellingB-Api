@@ -6,7 +6,6 @@ import { Spy, createSpyFromClass } from 'src/utils/unit-tests';
 describe('BaseResolver', () => {
   let resolver: BaseResolverHostType;
   let serviceSpy: Spy<BaseService>;
-
   class mockClass {
     name = 'My Awesome Class Name';
   }
