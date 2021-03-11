@@ -1,8 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BaseService } from './base.service';
 import { BaseRepository } from '../repositories/base.repository';
-import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class';
-import { Spy } from 'src/utils/unit-tests/spy.type';
+import { Spy, createSpyFromClass } from 'src/utils/unit-tests';
 
 describe('PrismaService', () => {
   let service: BaseService;
@@ -30,7 +29,7 @@ describe('PrismaService', () => {
   });
 
   describe('findOne()', () => {
-    let result: any;
+    let result: unknown;
 
     beforeEach(() => {
       repositorySpy.findOne.mockResolvedValue({});
@@ -43,7 +42,7 @@ describe('PrismaService', () => {
   });
 
   describe('findAll()', () => {
-    let result: any[];
+    let result: unknown[];
 
     beforeEach(() => {
       repositorySpy.find.mockResolvedValue([{}, {}]);

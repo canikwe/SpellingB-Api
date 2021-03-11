@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { createPrismaSpy } from 'src/utils/unit-tests';
+import { createPrismaSpy, PrismaSpy } from 'src/utils/unit-tests';
 import { PrismaService } from '../services/prisma.service';
 import { BaseRepository } from './base.repository';
 
 describe('BaseRepository', () => {
   let repository: BaseRepository;
-  let prismaSpy;
+  let prismaSpy: PrismaSpy;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -29,7 +29,7 @@ describe('BaseRepository', () => {
 
   describe('find()', () => {
     beforeEach(() => {
-      (prismaSpy.foos.findMany as jest.Mock).mockResolvedValue([{}]);
+      prismaSpy.foos.findMany.mockResolvedValue([{}]);
     });
 
     it('should return array of foos', () => {
@@ -39,7 +39,7 @@ describe('BaseRepository', () => {
 
   describe('findOne()', () => {
     beforeEach(() => {
-      (prismaSpy.foos.findFirst as jest.Mock).mockResolvedValue({});
+      prismaSpy.foos.findFirst.mockResolvedValue({});
     });
 
     it('should return a foo', async () => {
