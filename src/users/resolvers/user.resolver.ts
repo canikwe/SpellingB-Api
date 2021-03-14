@@ -4,11 +4,11 @@ import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { BaseService } from 'src/_base/services/base.service';
 import { Deck } from 'src/decks/entities/deck.entity';
 import { Users } from '@prisma/client';
-import { userDecksLoader } from 'src/_data-loaders';
+import { decksLoader } from 'src/_loaders';
 
 @Resolver(User)
 export class UserResolver extends BaseResolver(User) {
-  userDecksLoader = userDecksLoader;
+  decksLoader = decksLoader('userId');
 
   constructor(private readonly baseService: BaseService) {
     super(baseService);
@@ -17,6 +17,6 @@ export class UserResolver extends BaseResolver(User) {
   @ResolveField((type) => [Deck], { name: 'decks' })
   async decks(@Parent() user: Users): Promise<Deck[]> {
     const { id: userId } = user;
-    return this.userDecksLoader.load(userId);
+    return this.decksLoader.load(userId);
   }
 }
