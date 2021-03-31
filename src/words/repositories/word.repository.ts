@@ -12,6 +12,7 @@ export class WordRepository {
   // async create(): Promise<Word> {
   //   return; /** _baseRepo save goes here */
   // }
+
   // async update(): Promise<Word> {
   //   return; /** _baseRepo update goes here */
   // }
