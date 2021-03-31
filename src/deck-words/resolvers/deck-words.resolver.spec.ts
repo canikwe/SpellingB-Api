@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { createSpyFromClass } from 'src/utils/unit-tests';
-import { DeckWordsService } from '../services/deck-words.service';
+import { BaseService } from 'src/_base/services/base.service';
 import { DeckWordsResolver } from './deck-words.resolver';
 
 describe('DeckWordsResolver', () => {
@@ -11,8 +11,8 @@ describe('DeckWordsResolver', () => {
       providers: [
         DeckWordsResolver,
         {
-          provide: DeckWordsService,
-          useValue: createSpyFromClass(DeckWordsService),
+          provide: BaseService,
+          useValue: createSpyFromClass(BaseService),
         },
       ],
     }).compile();
