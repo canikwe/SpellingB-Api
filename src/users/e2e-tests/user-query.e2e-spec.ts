@@ -42,7 +42,7 @@ describe('UserResolver (e2e)', () => {
         app.getHttpServer(),
         findAllQuery(),
       );
-      const users = res.body?.data?.users;
+      const users = res.body?.data?.Users;
       firstUser = users?.[0];
 
       expect(users).toBeDefined();
@@ -51,13 +51,13 @@ describe('UserResolver (e2e)', () => {
   });
 
   describe('findOne()', () => {
-    it('should return some users', async () => {
+    it('should return a specific user', async () => {
       const res = await GqlTestRunner.sendGqlRequest(
         app.getHttpServer(),
         findOneQuery(),
       );
 
-      expect(res.body?.data?.user).toBeDefined();
+      expect(res.body?.data?.User).toBeDefined();
     });
   });
 
@@ -68,7 +68,7 @@ describe('UserResolver (e2e)', () => {
   const findAllQuery = () => {
     return gql`
       query {
-        users {
+        Users {
           id
 
           decks {
@@ -82,7 +82,7 @@ describe('UserResolver (e2e)', () => {
   const findOneQuery = () => {
     return gql`
         query {
-          user(id: ${firstUser?.id}) {
+          User(id: ${firstUser?.id}) {
             id
 
             decks {

@@ -32,7 +32,7 @@ describe('DeckWordResolver (e2e)', () => {
     it('should return an array of deckWords', async () => {
       const query = gql`
         query {
-          deckWords {
+          DeckWords {
             id
           }
         }
@@ -42,7 +42,7 @@ describe('DeckWordResolver (e2e)', () => {
         app.getHttpServer(),
         query,
       );
-      const deckWords = res.body?.data?.deckWords;
+      const deckWords = res.body?.data?.DeckWords;
       deckWord = deckWords?.[0];
 
       expect(deckWords).toBeDefined();
@@ -51,10 +51,10 @@ describe('DeckWordResolver (e2e)', () => {
   });
 
   describe('findOne()', () => {
-    it('should return a deckWord', async () => {
+    it('should return a DeckWord', async () => {
       const query = gql`
         query {
-          deckWord(id: ${deckWord?.id}) {
+          DeckWord(id: ${deckWord?.id}) {
             id
           }
         }
@@ -64,7 +64,7 @@ describe('DeckWordResolver (e2e)', () => {
         query,
       );
 
-      expect(res.body?.data?.deckWord).toBeDefined();
+      expect(res.body?.data?.DeckWord).toBeDefined();
     });
   });
 });
