@@ -32,7 +32,7 @@ describe('WordResolver (e2e)', () => {
     it('should return an array of words', async () => {
       const query = gql`
         query {
-          words {
+          Words {
             id
           }
         }
@@ -42,7 +42,7 @@ describe('WordResolver (e2e)', () => {
         app.getHttpServer(),
         query,
       );
-      const words = res.body?.data?.words;
+      const words = res.body?.data?.Words;
       word = words?.[0];
 
       expect(words).toBeDefined();
@@ -54,7 +54,7 @@ describe('WordResolver (e2e)', () => {
     it('should return a word', async () => {
       const query = gql`
         query {
-          word(id: ${word?.id}) {
+          Word(id: ${word?.id}) {
             id
           }
         }
@@ -64,7 +64,7 @@ describe('WordResolver (e2e)', () => {
         query,
       );
 
-      expect(res.body?.data?.word).toBeDefined();
+      expect(res.body?.data?.Word).toBeDefined();
     });
   });
 });

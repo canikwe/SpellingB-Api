@@ -32,7 +32,7 @@ describe('DeckResolver (e2e)', () => {
     it('should return an array of decks', async () => {
       const query = gql`
         query {
-          decks {
+          Decks {
             id
             user {
               id
@@ -45,7 +45,7 @@ describe('DeckResolver (e2e)', () => {
         app.getHttpServer(),
         query,
       );
-      const decks = res.body?.data?.decks;
+      const decks = res.body?.data?.Decks;
       deck = decks?.[0];
 
       expect(decks).toBeDefined();
@@ -57,7 +57,7 @@ describe('DeckResolver (e2e)', () => {
     it('should return a deck', async () => {
       const query = gql`
         query {
-          deck(id: ${deck?.id}) {
+          Deck(id: ${deck?.id}) {
             id
             user {
               id
@@ -70,7 +70,7 @@ describe('DeckResolver (e2e)', () => {
         query,
       );
 
-      expect(res.body?.data?.deck).toBeDefined();
+      expect(res.body?.data?.Deck).toBeDefined();
     });
   });
 });
