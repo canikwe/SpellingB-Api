@@ -5,20 +5,20 @@ import { BaseService } from '../services/base.service';
 import * as pluralize from 'pluralize';
 
 export function BaseResolver<T extends Type<unknown>>(classRef: T): any {
-  const name = pluralize(camelCase(classRef.name));
+  const modelName = pluralize(camelCase(classRef.name));
 
   @Resolver({ isAbstract: true })
   abstract class BaseResolverHost {
-    constructor(protected readonly _service: BaseService) {}
+    constructor(protected readonly service: BaseService) {}
 
-    @Query(() => [classRef], { name })
+    @Query(() => [classRef], { name: pluralize(classRef.name) })
     findAll() {
-      return this._service.findAll(name);
+      return this.service.findAll(modelName);
     }
 
-    @Query(() => classRef, { name: `${camelCase(classRef.name)}` })
+    @Query(() => classRef, { name: classRef.name })
     findOne(@Args('id', { type: () => Int }) id: number) {
-      return this._service.findOne(id, name);
+      return this.service.findOne(id, modelName);
     }
   }
 
