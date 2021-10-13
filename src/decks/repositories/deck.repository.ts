@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/_base/services/prisma.service';
 import { Deck } from '../entities/deck.entity';
 
@@ -10,10 +9,6 @@ import { Deck } from '../entities/deck.entity';
 @Injectable()
 export class DeckRepository {
   constructor(@Inject(PrismaService) private prisma: PrismaService) {}
-
-  async findAll(args?: Prisma.DecksFindManyArgs) {
-    return this.prisma.decks.findMany(args);
-  }
   // async create(): Promise<Deck> {
   //   return; /** _baseRepo save goes here */
   // }
