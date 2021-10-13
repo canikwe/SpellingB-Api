@@ -53,8 +53,13 @@ type Query {
   User(id: Int!): User!
   Decks: [Deck!]!
   Deck(id: Int!): Deck!
+  decks(where: DecksWhereInput!): [Deck!]!
   Words: [Word!]!
   Word(id: Int!): Word!
   DeckWords: [DeckWord!]!
   DeckWord(id: Int!): DeckWord!
+}
+
+input DecksWhereInput {
+  AND: String
 }
