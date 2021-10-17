@@ -5,7 +5,7 @@ import { BaseService } from '../services/base.service';
 import * as pluralize from 'pluralize';
 
 export function BaseResolver<T extends Type<unknown>>(classRef: T): any {
-  const modelName = pluralize(camelCase(classRef.name));
+  const modelName = camelCase(classRef.name);
 
   @Resolver({ isAbstract: true })
   abstract class BaseResolverHost {
