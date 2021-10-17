@@ -1,13 +1,12 @@
-import { CreateDeckInput } from 'src/decks/dto/create-deck.input';
-import { User } from '../../src/users/entities/user.entity';
-const faker = require('faker');
+import faker from 'faker';
+import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
 
-export const buildDecks = (user: User): CreateDeckInput[] => {
-  return new Array(2).fill(undefined).reduce((acc: CreateDeckInput[]) => {
+export const buildDecks = (user: User): any[] => {
+  return new Array(2).fill(undefined).reduce((acc: any[]) => {
     return acc.concat({
       title: faker.random.words(3),
       isPublic: faker.random.boolean(),
       userId: user.id,
     });
-  }, [] as CreateDeckInput[]);
+  }, [] as any[]);
 };

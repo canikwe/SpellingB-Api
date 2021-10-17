@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Resolver } from '@nestjs/graphql';
+import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/deck-word/deck-word.model';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { BaseService } from 'src/_base/services/base.service';
-import { DeckWord } from '../entities/deck-word.entity';
 
 @Injectable()
 @Resolver(() => DeckWord)

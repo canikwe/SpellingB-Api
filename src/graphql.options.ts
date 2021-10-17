@@ -8,7 +8,6 @@ export class GraphqlOptions implements GqlOptionsFactory {
     return {
       context: ({ req, res }) => ({ req, res }),
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      playground: true,
     };
   }
 }

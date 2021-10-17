@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
+import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/deck-word/deck-word.model';
 import { PrismaService } from 'src/_base/services/prisma.service';
-import { DeckWord } from '../entities/deck-word.entity';
 
 /**
  * Repository wrapper class for DeckWord Repository. Contains all persistence and
@@ -11,10 +11,10 @@ export class DeckWordRepository {
   constructor(@Inject(PrismaService) private prisma: PrismaService) {}
 
   async find(): Promise<DeckWord[]> {
-    return this.prisma.deckWords.findMany();
+    return this.prisma.deckWord.findMany();
   }
   async findOne(id: number): Promise<DeckWord> {
-    return this.prisma.deckWords.findFirst({ where: { id } });
+    return this.prisma.deckWord.findFirst({ where: { id } });
   }
   async create(): Promise<DeckWord> {
     return; /** _baseRepo save goes here */

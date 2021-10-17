@@ -2,12 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type WordCount {
+  deckWords: Int!
+}
+
 type Word {
-  id: Int!
+  id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String!
-  deckWords: [DeckWord!]!
+  deckWords: [DeckWord!]
+  _count: WordCount
 }
 
 """
@@ -16,45 +21,55 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type DeckWord {
-  id: Int!
+  id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
   starred: Boolean!
   order: Int!
   wordId: Int!
   deckId: Int!
-  word: Word!
   deck: Deck!
+  word: Word!
+}
+
+type DeckCount {
+  deckWords: Int!
 }
 
 type Deck {
-  id: Int!
+  id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
   title: String!
   isPublic: Boolean!
   userId: Int!
   user: User!
-  deckWords: [DeckWord!]!
+  deckWords: [DeckWord!]
+  _count: DeckCount
+}
+
+type UserCount {
+  decks: Int!
 }
 
 type User {
-  id: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  id: ID!
   firstName: String!
   lastName: String!
   email: String!
-  decks: [Deck!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  decks: [Deck!]
+  _count: UserCount
 }
 
 type Query {
   Users: [User!]!
   User(id: Int!): User!
-  Decks: [Deck!]!
-  Deck(id: Int!): Deck!
   Words: [Word!]!
   Word(id: Int!): Word!
+  Decks: [Deck!]!
+  Deck(id: Int!): Deck!
   DeckWords: [DeckWord!]!
   DeckWord(id: Int!): DeckWord!
 }

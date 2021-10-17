@@ -1,9 +1,9 @@
 import { Parent, ResolveField, Resolver } from '@nestjs/graphql';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { BaseService } from 'src/_base/services/base.service';
-import { Deck } from '../entities/deck.entity';
 import { userLoader } from 'src/_loaders';
-import { User } from 'src/users/entities/user.entity';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/deck/deck.model';
+import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
 
 @Resolver(() => Deck)
 export class DeckResolver extends BaseResolver(Deck) {

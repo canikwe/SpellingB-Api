@@ -9,7 +9,7 @@ async function main() {
   /** Users Seeds */
   const users = await Promise.all(
     buildUsers().map(async (data) => {
-      return await prisma.users.create({
+      return await prisma.user.create({
         data,
       });
     }),
@@ -19,7 +19,7 @@ async function main() {
   /** Words seeds */
   const words = await Promise.all(
     buildWords().map(async (data) => {
-      return await prisma.words.upsert({
+      return await prisma.word.upsert({
         where: { name: data.name },
         update: {},
         create: { name: data.name },
@@ -31,7 +31,7 @@ async function main() {
   /** Decks seeds */
   const decks = await Promise.all(
     buildDecks(users[0]).map(async (data) => {
-      return await prisma.decks.create({
+      return await prisma.deck.create({
         data,
       });
     }),
@@ -41,13 +41,14 @@ async function main() {
   /** DeckWords seeds */
   const deckWords = await Promise.all(
     buildDeckWords(words, decks[0]).map(async (data) => {
-      return await prisma.deckWords.create({
+      return await prisma.deckWord.create({
         data,
       });
     }),
   );
   deckWords && console.log('✨ successfully seeded deckWords');
 }
+
 main()
   .catch((e) => {
     console.error(e);

@@ -1,6 +1,6 @@
-import { Word } from '../../src/words/entities/word.entity';
-import { Deck } from '../../src/decks/entities/deck.entity';
 import { CreateDeckWordInput } from 'src/deck-words/dto/create-deck-word.input';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/deck/deck.model';
+import { Word } from 'src/@generated/prisma-nestjs-graphql/word/word.model';
 
 export const buildDeckWords = (words: Word[], deck: Deck) => {
   const filteredWords = words.filter((_, i) => i % 2 === 0);

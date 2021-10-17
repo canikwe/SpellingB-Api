@@ -1,5 +1,7 @@
 generator client {
   provider = "prisma-client-js"
+  // provider = "node node_modules/prisma-nestjs-graphql" // used for class generation
+  // output   = "../src/@generated/prisma-nestjs-graphql" // used for class generation
 }
 
 datasource db {
@@ -7,7 +9,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model DeckWords {
+model DeckWord {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @default(now()) @db.Timestamp(6)
@@ -15,37 +17,37 @@ model DeckWords {
   order     Int
   wordId    Int
   deckId    Int
-  deck      Decks    @relation(fields: [deckId], references: [id])
-  word      Words    @relation(fields: [wordId], references: [id])
+  deck      Deck     @relation(fields: [deckId], references: [id])
+  word      Word     @relation(fields: [wordId], references: [id])
 }
 
-model Decks {
-  id        Int         @id @default(autoincrement())
-  createdAt DateTime    @default(now()) @db.Timestamp(6)
-  updatedAt DateTime    @default(now()) @db.Timestamp(6)
-  title     String      @db.VarChar
+model Deck {
+  id        Int        @id @default(autoincrement())
+  createdAt DateTime   @default(now()) @db.Timestamp(6)
+  updatedAt DateTime   @default(now()) @db.Timestamp(6)
+  title     String     @db.VarChar
   isPublic  Boolean
   userId    Int
-  user      Users       @relation(fields: [userId], references: [id])
-  deckWords DeckWords[]
+  user      User       @relation(fields: [userId], references: [id])
+  deckWords DeckWord[]
 }
 
-model Users {
+model User {
   id        Int      @id @default(autoincrement())
   firstName String   @db.VarChar(255)
   lastName  String   @db.VarChar(255)
   email     String   @db.VarChar(255)
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @default(now()) @db.Timestamp(6)
-  decks     Decks[]
+  decks     Deck[]
 }
 
-model Words {
-  id        Int         @id @default(autoincrement())
-  createdAt DateTime    @default(now()) @db.Timestamp(6)
-  updatedAt DateTime    @default(now()) @db.Timestamp(6)
-  name      String      @unique @db.VarChar
-  deckWords DeckWords[]
+model Word {
+  id        Int        @id @default(autoincrement())
+  createdAt DateTime   @default(now()) @db.Timestamp(6)
+  updatedAt DateTime   @default(now()) @db.Timestamp(6)
+  name      String     @unique @db.VarChar
+  deckWords DeckWord[]
 }
 
 model migrations {
