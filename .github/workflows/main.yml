@@ -25,15 +25,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a set of commands using the runners shell
+      - name: install dependencies
+        run: npm install
+        
+      - name: generate schema
+        run: npx prisma generate
+      
       - name: Start the app
-        run: |
-          npm install
-          npm start
+        run: npm start
         
-      # Runs a single command using the runners shell
       - name: Run unit tests
-        run: npm test
+        run: npm test:cov
         
-      - name: Run coverage report
-        run: npm run test:cov
+#       - name: Run coverage report
+#         run: npm run test:cov
