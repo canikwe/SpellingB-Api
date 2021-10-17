@@ -66,10 +66,10 @@ type User {
 type Query {
   Users: [User!]!
   User(id: Int!): User!
-  Decks: [Deck!]!
-  Deck(id: Int!): Deck!
   Words: [Word!]!
   Word(id: Int!): Word!
+  Decks: [Deck!]!
+  Deck(id: Int!): Deck!
   DeckWords: [DeckWord!]!
   DeckWord(id: Int!): DeckWord!
 }
