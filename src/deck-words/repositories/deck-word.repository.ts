@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
+import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/deck-word/deck-word.model';
 import { PrismaService } from 'src/_base/services/prisma.service';
-import { DeckWord } from '../entities/deck-word.entity';
 
 /**
  * Repository wrapper class for DeckWord Repository. Contains all persistence and

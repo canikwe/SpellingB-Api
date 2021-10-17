@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { PrismaService } from 'src/_base/services/prisma.service';
-import { Deck } from '../entities/deck.entity';
 
 /**
  * Repository wrapper class for Deck Repository. Contains all persistence and

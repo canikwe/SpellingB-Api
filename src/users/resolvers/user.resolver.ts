@@ -1,10 +1,10 @@
 import { Parent, ResolveField, Resolver} from '@nestjs/graphql'; // prettier-ignore
-import { User } from '../entities/user.entity';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { BaseService } from 'src/_base/services/base.service';
-import { Deck } from 'src/decks/entities/deck.entity';
 import { Users } from '@prisma/client';
 import { decksLoader } from 'src/_loaders';
+import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/deck/deck.model';
 @Resolver(User)
 export class UserResolver extends BaseResolver(User) {
   decksLoader = decksLoader('userId');

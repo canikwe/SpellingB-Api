@@ -2,8 +2,8 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
 import { gql } from 'apollo-server-express';
-import { User } from '../entities/user.entity';
 import { GqlTestRunner } from 'src/utils/e2e-tests';
+import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
 
 describe('UserResolver (e2e)', () => {
   let app: INestApplication;

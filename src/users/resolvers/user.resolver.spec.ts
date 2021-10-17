@@ -2,8 +2,10 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserResolver } from './user.resolver';
 import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class';
 import { BaseService } from '../../_base/services/base.service';
-import { Deck, deckFactory } from '../../decks/entities/deck.entity';
-import { User, userFactory } from '../entities/user.entity';
+import { deckFactory } from '../../decks/entities/deck.entity';
+import { userFactory } from '../entities/user.entity';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/deck/deck.model';
+import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
 
 describe('UserResolver', () => {
   let resolver: UserResolver;
