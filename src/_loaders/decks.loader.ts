@@ -3,7 +3,7 @@ import { groupBy } from 'lodash';
 import { prisma } from '../../prisma/client';
 
 async function batchDecks(ids: number[], fk: string) {
-  const decks = await prisma.decks.findMany({
+  const decks = await prisma.deck.findMany({
     where: {
       [fk]: { in: ids },
     },

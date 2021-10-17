@@ -7,15 +7,16 @@ import { DeckWordWhereUniqueInput } from './deck-word-where-unique.input';
 
 @InputType()
 export class DeckWordCreateNestedManyWithoutDeckInput {
-  @Field(() => [DeckWordCreateWithoutDeckInput], { nullable: true })
-  create?: Array<DeckWordCreateWithoutDeckInput>;
 
-  @Field(() => [DeckWordCreateOrConnectWithoutDeckInput], { nullable: true })
-  connectOrCreate?: Array<DeckWordCreateOrConnectWithoutDeckInput>;
+    @Field(() => [DeckWordCreateWithoutDeckInput], {nullable:true})
+    create?: Array<DeckWordCreateWithoutDeckInput>;
 
-  @Field(() => DeckWordCreateManyDeckInputEnvelope, { nullable: true })
-  createMany?: DeckWordCreateManyDeckInputEnvelope;
+    @Field(() => [DeckWordCreateOrConnectWithoutDeckInput], {nullable:true})
+    connectOrCreate?: Array<DeckWordCreateOrConnectWithoutDeckInput>;
 
-  @Field(() => [DeckWordWhereUniqueInput], { nullable: true })
-  connect?: Array<DeckWordWhereUniqueInput>;
+    @Field(() => DeckWordCreateManyDeckInputEnvelope, {nullable:true})
+    createMany?: DeckWordCreateManyDeckInputEnvelope;
+
+    @Field(() => [DeckWordWhereUniqueInput], {nullable:true})
+    connect?: Array<DeckWordWhereUniqueInput>;
 }

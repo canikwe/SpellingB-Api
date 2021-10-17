@@ -3,7 +3,7 @@ import { keyBy } from 'lodash';
 import { prisma } from '../../prisma/client';
 
 async function batchUsers(userIds: number[]) {
-  const users = await prisma.users.findMany({
+  const users = await prisma.user.findMany({
     where: {
       id: { in: userIds },
     },

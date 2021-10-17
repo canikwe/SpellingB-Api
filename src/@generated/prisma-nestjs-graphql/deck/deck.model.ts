@@ -8,30 +8,31 @@ import { DeckCount } from './deck-count.output';
 
 @ObjectType()
 export class Deck {
-  @Field(() => ID, { nullable: false })
-  id!: number;
 
-  @Field(() => Date, { nullable: false })
-  createdAt!: Date;
+    @Field(() => ID, {nullable:false})
+    id!: number;
 
-  @Field(() => Date, { nullable: false })
-  updatedAt!: Date;
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date;
 
-  @Field(() => String, { nullable: false })
-  title!: string;
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date;
 
-  @Field(() => Boolean, { nullable: false })
-  isPublic!: boolean;
+    @Field(() => String, {nullable:false})
+    title!: string;
 
-  @Field(() => Int, { nullable: false })
-  userId!: number;
+    @Field(() => Boolean, {nullable:false})
+    isPublic!: boolean;
 
-  @Field(() => User, { nullable: false })
-  user?: User;
+    @Field(() => Int, {nullable:false})
+    userId!: number;
 
-  @Field(() => [DeckWord], { nullable: true })
-  deckWords?: Array<DeckWord>;
+    @Field(() => User, {nullable:false})
+    user?: User;
 
-  @Field(() => DeckCount, { nullable: true })
-  _count?: DeckCount | null;
+    @Field(() => [DeckWord], {nullable:true})
+    deckWords?: Array<DeckWord>;
+
+    @Field(() => DeckCount, {nullable:true})
+    _count?: DeckCount | null;
 }
