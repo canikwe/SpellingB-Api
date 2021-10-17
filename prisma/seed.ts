@@ -48,6 +48,7 @@ async function main() {
   );
   deckWords && console.log('✨ successfully seeded deckWords');
 }
+
 main()
   .catch((e) => {
     console.error(e);

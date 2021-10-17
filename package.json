@@ -28,7 +28,7 @@
     "@nestjs/core": "^7.5.1",
     "@nestjs/graphql": "^7.9.1",
     "@nestjs/platform-express": "^7.5.1",
-    "@prisma/client": "^2.18.0",
+    "@prisma/client": "^3.2.1",
     "apollo-server-express": "^2.19.0",
     "dataloader": "^2.0.0",
     "faker": "^5.1.0",
@@ -57,7 +57,8 @@
     "factory.ts": "^0.5.1",
     "jest": "^26.6.3",
     "prettier": "^2.1.2",
-    "prisma": "^2.18.0",
+    "prisma": "^3.2.1",
+    "prisma-nestjs-graphql": "^14.6.0",
     "supertest": "^6.0.0",
     "ts-jest": "^26.4.3",
     "ts-loader": "^8.0.8",
@@ -84,7 +85,10 @@
       "!src/**/*.module.ts"
     ],
     "coverageDirectory": "./coverage",
-    "coverageReporters": ["json", "html"],
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
     "testEnvironment": "node"
   }
 }
