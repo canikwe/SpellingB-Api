@@ -9,7 +9,7 @@ import { BaseService } from 'src/_base/services/base.service';
 @Resolver(() => DeckWord)
 export class DeckWordsResolver extends BaseResolver({
   entityRef: DeckWord,
-  whereArgs: FindManyDeckWordArgs,
+  findManyInputRef: FindManyDeckWordArgs,
 }) {
   constructor(private readonly baseService: BaseService) {
     super(baseService);

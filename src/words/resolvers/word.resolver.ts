@@ -7,7 +7,7 @@ import { BaseService } from '../../_base/services/base.service';
 @Resolver(() => Word)
 export class WordResolver extends BaseResolver({
   entityRef: Word,
-  whereArgs: FindManyWordArgs,
+  findManyInputRef: FindManyWordArgs,
 }) {
   constructor(private readonly baseService: BaseService) {
     super(baseService);

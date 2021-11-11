@@ -1,4 +1,4 @@
-export interface BaseResolverConfig<E, W> {
+export interface BaseResolverConfig<E, F> {
   entityRef: E;
-  whereArgs: W;
+  findManyInputRef: F;
 }

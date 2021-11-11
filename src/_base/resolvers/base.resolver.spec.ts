@@ -18,7 +18,7 @@ describe('BaseResolver', () => {
     serviceSpy = createSpyFromClass(BaseService) as unknown as Spy<BaseService>;
     const base = BaseResolver({
       entityRef: mockEntity,
-      whereArgs: mockFindManyArgs,
+      findManyInputRef: mockFindManyArgs,
     });
     resolver = new base(serviceSpy);
   });

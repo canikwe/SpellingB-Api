@@ -9,7 +9,7 @@ import { FindManyDeckArgs } from 'src/@generated/prisma-nestjs-graphql/deck/find
 @Resolver(() => Deck)
 export class DeckResolver extends BaseResolver({
   entityRef: Deck,
-  whereArgs: FindManyDeckArgs,
+  findManyInputRef: FindManyDeckArgs,
 }) {
   userLoader = userLoader;
 

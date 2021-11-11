@@ -8,7 +8,7 @@ import { FindManyUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find
 @Resolver(User)
 export class UserResolver extends BaseResolver({
   entityRef: User,
-  whereArgs: FindManyUserArgs,
+  findManyInputRef: FindManyUserArgs,
 }) {
   decksLoader = decksLoader('userId');
 
