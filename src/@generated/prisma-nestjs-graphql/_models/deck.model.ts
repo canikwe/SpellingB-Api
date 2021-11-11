@@ -1,9 +1,9 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
-import { User } from '../user/user.model';
-import { DeckWord } from '../deck-word/deck-word.model';
-import { DeckCount } from './deck-count.output';
+import { User } from './user.model';
+import { DeckWord } from './deck-word.model';
+import { DeckCount } from '../deck/deck-count.output';
 
 @ObjectType()
 export class Deck {

@@ -1,7 +1,7 @@
 import { Field, Int } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
-import { Deck } from '../deck/deck.model';
-import { UserCount } from './user-count.output';
+import { Deck } from './deck.model';
+import { UserCount } from '../user/user-count.output';
 
 @ObjectType()
 export class User {

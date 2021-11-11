@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/deck-word/deck-word.model';
+import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/_models/deck-word.model';
 import { PrismaService } from 'src/_base/services/prisma.service';
 
 /**

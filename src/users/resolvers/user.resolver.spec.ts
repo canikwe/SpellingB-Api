@@ -4,8 +4,8 @@ import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class
 import { BaseService } from '../../_base/services/base.service';
 import { deckFactory } from '../../decks/entities/deck.entity';
 import { userFactory } from '../entities/user.entity';
-import { Deck } from 'src/@generated/prisma-nestjs-graphql/deck/deck.model';
-import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';
+import { User } from 'src/@generated/prisma-nestjs-graphql/_models/user.model';
 
 describe('UserResolver', () => {
   let resolver: UserResolver;

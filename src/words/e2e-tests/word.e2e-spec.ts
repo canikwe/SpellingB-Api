@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
 import { gql } from 'apollo-server-express';
 import { GqlTestRunner } from 'src/utils/e2e-tests';
-import { Word } from 'src/@generated/prisma-nestjs-graphql/word/word.model';
+import { Word } from 'src/@generated/prisma-nestjs-graphql/_models/word.model';
 
 describe('WordResolver (e2e)', () => {
   let app: INestApplication;

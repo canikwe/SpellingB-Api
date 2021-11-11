@@ -1,7 +1,7 @@
 import { Field, Int } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
-import { DeckWord } from '../deck-word/deck-word.model';
-import { WordCount } from './word-count.output';
+import { DeckWord } from './deck-word.model';
+import { WordCount } from '../word/word-count.output';
 
 @ObjectType()
 export class Word {

@@ -4,8 +4,8 @@ import { DeckResolver } from './deck.resolver';
 import { userFactory } from '../../users/entities/user.entity';
 import { deckFactory } from '../entities/deck.entity';
 import { BaseService } from '../../_base/services/base.service';
-import { Deck } from 'src/@generated/prisma-nestjs-graphql/deck/deck.model';
-import { User } from 'src/@generated/prisma-nestjs-graphql/user/user.model';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';
+import { User } from 'src/@generated/prisma-nestjs-graphql/_models/user.model';
 
 describe('DeckResolver', () => {
   let resolver: DeckResolver;

@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
 import { gql } from 'apollo-server-express';
 import { GqlTestRunner } from 'src/utils/e2e-tests';
-import { Deck } from 'src/@generated/prisma-nestjs-graphql/deck/deck.model';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';
 
 describe('DeckResolver (e2e)', () => {
   let app: INestApplication;
