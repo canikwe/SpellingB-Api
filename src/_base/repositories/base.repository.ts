@@ -9,8 +9,8 @@ import { PrismaService } from 'src/_base/services/prisma.service';
 export class BaseRepository {
   constructor(@Inject(PrismaService) private prisma: PrismaService) {}
 
-  async find(modelName: string): Promise<any[]> {
-    return this.prisma[modelName].findMany();
+  async find<T>(modelName: string, findManyArgs?: T): Promise<any[]> {
+    return this.prisma[modelName].findMany(findManyArgs);
   }
 
   async findOne(id: number, modelName: string): Promise<any> {

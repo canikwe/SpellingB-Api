@@ -1,3 +1,4 @@
-export interface BaseResolverConfig<E> {
+export interface BaseResolverConfig<E, W> {
   entityRef: E;
+  whereArgs: W;
 }

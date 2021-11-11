@@ -8,40 +8,39 @@ import { WordRelationFilter } from '../word/word-relation-filter.input';
 
 @InputType()
 export class DeckWordWhereInput {
+  @Field(() => [DeckWordWhereInput], { nullable: true })
+  AND?: Array<DeckWordWhereInput>;
 
-    @Field(() => [DeckWordWhereInput], {nullable:true})
-    AND?: Array<DeckWordWhereInput>;
+  @Field(() => [DeckWordWhereInput], { nullable: true })
+  OR?: Array<DeckWordWhereInput>;
 
-    @Field(() => [DeckWordWhereInput], {nullable:true})
-    OR?: Array<DeckWordWhereInput>;
+  @Field(() => [DeckWordWhereInput], { nullable: true })
+  NOT?: Array<DeckWordWhereInput>;
 
-    @Field(() => [DeckWordWhereInput], {nullable:true})
-    NOT?: Array<DeckWordWhereInput>;
+  @Field(() => IntFilter, { nullable: true })
+  id?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    id?: IntFilter;
+  @Field(() => DateTimeFilter, { nullable: true })
+  createdAt?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
-    createdAt?: DateTimeFilter;
+  @Field(() => DateTimeFilter, { nullable: true })
+  updatedAt?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
-    updatedAt?: DateTimeFilter;
+  @Field(() => BoolFilter, { nullable: true })
+  starred?: BoolFilter;
 
-    @Field(() => BoolFilter, {nullable:true})
-    starred?: BoolFilter;
+  @Field(() => IntFilter, { nullable: true })
+  order?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    order?: IntFilter;
+  @Field(() => IntFilter, { nullable: true })
+  wordId?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    wordId?: IntFilter;
+  @Field(() => IntFilter, { nullable: true })
+  deckId?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    deckId?: IntFilter;
+  @Field(() => DeckRelationFilter, { nullable: true })
+  deck?: DeckRelationFilter;
 
-    @Field(() => DeckRelationFilter, {nullable:true})
-    deck?: DeckRelationFilter;
-
-    @Field(() => WordRelationFilter, {nullable:true})
-    word?: WordRelationFilter;
+  @Field(() => WordRelationFilter, { nullable: true })
+  word?: WordRelationFilter;
 }

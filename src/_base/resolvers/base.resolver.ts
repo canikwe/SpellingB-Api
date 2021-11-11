@@ -5,9 +5,10 @@ import { BaseService } from '../services/base.service';
 import * as pluralize from 'pluralize';
 import { BaseResolverConfig } from '../types/base-resolver-config.type';
 
-export function BaseResolver<E extends Type<unknown>>({
+export function BaseResolver<E extends Type<unknown>, W extends Type<unknown>>({
   entityRef,
-}: BaseResolverConfig<E>): any {
+  whereArgs,
+}: BaseResolverConfig<E, W>): any {
   const modelName = camelCase(entityRef.name);
 
   @Resolver({ isAbstract: true })
@@ -15,8 +16,14 @@ export function BaseResolver<E extends Type<unknown>>({
     constructor(protected readonly service: BaseService) {}
 
     @Query(() => [entityRef], { name: pluralize(entityRef.name) })
-    findAll() {
-      return this.service.findAll(modelName);
+    findAll(
+      @Args(modelName + 'FindManyInput', {
+        type: () => whereArgs,
+        nullable: true,
+      })
+      whereArgs?: W,
+    ) {
+      return this.service.findAll(modelName, whereArgs);
     }
 
     @Query(() => entityRef, { name: entityRef.name })
