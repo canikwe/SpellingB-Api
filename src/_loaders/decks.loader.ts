@@ -1,15 +1,12 @@
 import * as DataLoader from 'dataloader';
-import { groupBy } from 'lodash';
-import { prisma } from '../../prisma/client';
+import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';
+import { batchManyEntities } from './_helpers/batch-many-entities';
 
-async function batchDecks(ids: number[], fk: string) {
-  const decks = await prisma.deck.findMany({
-    where: {
-      [fk]: { in: ids },
-    },
-  });
-  const decksById = groupBy(decks, fk);
-  return ids.map((id) => decksById[id] ?? []);
+async function batchDecks(
+  ids: number[],
+  foreignKey: string,
+): Promise<Deck[][]> {
+  return batchManyEntities<Deck>({ ids, foreignKey, entity: Deck });
 }
 
 export const decksLoader = (foreignKey: string) =>

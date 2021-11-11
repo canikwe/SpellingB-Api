@@ -2,6 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type UserCount {
+  decks: Int!
+}
+
+type User {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  decks: [Deck!]
+  _count: UserCount
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type WordCount {
   deckWords: Int!
 }
@@ -14,11 +34,6 @@ type Word {
   deckWords: [DeckWord!]
   _count: WordCount
 }
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type DeckWord {
   id: Int!
@@ -46,21 +61,6 @@ type Deck {
   user: User!
   deckWords: [DeckWord!]
   _count: DeckCount
-}
-
-type UserCount {
-  decks: Int!
-}
-
-type User {
-  id: Int!
-  firstName: String!
-  lastName: String!
-  email: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  decks: [Deck!]
-  _count: UserCount
 }
 
 type Query {

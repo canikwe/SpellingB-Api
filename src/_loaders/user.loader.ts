@@ -1,15 +1,9 @@
 import * as DataLoader from 'dataloader';
-import { keyBy } from 'lodash';
-import { prisma } from '../../prisma/client';
+import { batchOneEntity } from './_helpers/batch-one-entity';
+import { User } from '../@generated/prisma-nestjs-graphql/_models/user.model';
 
-async function batchUsers(userIds: number[]) {
-  const users = await prisma.user.findMany({
-    where: {
-      id: { in: userIds },
-    },
-  });
-  const usersById = keyBy(users, 'id');
-  return userIds.map((id) => usersById[id] ?? null);
+async function batchUsers(ids: number[]): Promise<User[]> {
+  return batchOneEntity<User>({ ids, entity: User });
 }
 
 export const userLoader = new DataLoader(batchUsers);
