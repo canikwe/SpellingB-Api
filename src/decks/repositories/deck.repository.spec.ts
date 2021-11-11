@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { createPrismaSpy } from 'src/utils/unit-tests';
+import { createPrismaSpy } from 'test/unit-tests';
 import { PrismaService } from 'src/_base/services/prisma.service';
 import { DeckRepository } from './deck.repository';
 

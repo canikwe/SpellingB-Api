@@ -6,7 +6,7 @@ import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';
 import { User } from 'src/@generated/prisma-nestjs-graphql/_models/user.model';
 
 @Resolver(() => Deck)
-export class DeckResolver extends BaseResolver(Deck) {
+export class DeckResolver extends BaseResolver({ entityRef: Deck }) {
   userLoader = userLoader;
 
   constructor(private readonly baseService: BaseService) {

@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { createSpyFromClass } from 'src/utils/unit-tests';
+import { createSpyFromClass } from 'test/unit-tests';
 import { BaseService } from 'src/_base/services/base.service';
 import { DeckWordsResolver } from './deck-words.resolver';
 

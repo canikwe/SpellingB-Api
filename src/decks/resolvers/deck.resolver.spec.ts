@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { createSpyFromClass } from 'src/utils/unit-tests';
+import { createSpyFromClass } from 'test/unit-tests';
 import { DeckResolver } from './deck.resolver';
-import { userFactory } from '../../users/entities/user.entity';
-import { deckFactory } from '../entities/deck.entity';
+import { userFactory } from '../../_factories/user.factory';
+import { deckFactory } from '../../_factories/deck.factory';
 import { BaseService } from '../../_base/services/base.service';
 import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';
 import { User } from 'src/@generated/prisma-nestjs-graphql/_models/user.model';

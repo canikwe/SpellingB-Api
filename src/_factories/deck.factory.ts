@@ -1,5 +1,4 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { BaseEntity, baseFactory } from 'src/_base/entities/base.entity';
+import { baseFactory } from 'src/_factories/base.factory';
 import * as Factory from 'factory.ts';
 import * as faker from 'faker';
 import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';

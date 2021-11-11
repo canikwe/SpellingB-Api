@@ -6,7 +6,7 @@ import { BaseService } from 'src/_base/services/base.service';
 
 @Injectable()
 @Resolver(() => DeckWord)
-export class DeckWordsResolver extends BaseResolver(DeckWord) {
+export class DeckWordsResolver extends BaseResolver({ entityRef: DeckWord }) {
   constructor(private readonly baseService: BaseService) {
     super(baseService);
   }
