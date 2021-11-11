@@ -34,7 +34,7 @@ describe('DeckResolver', () => {
     let result: User;
 
     beforeEach(async () => {
-      resolver.userLoader = {
+      (resolver as any).userLoader = {
         load: jest.fn().mockReturnValue(userFactory.build()),
       } as any;
       result = await resolver.user(deckFactory.build() as Deck);

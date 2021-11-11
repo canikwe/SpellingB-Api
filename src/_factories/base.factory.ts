@@ -3,7 +3,7 @@ import { Sync } from 'factory.ts';
 const faker = require('faker');
 
 export const baseFactory = Sync.makeFactory({
-  id: faker.random.number(),
+  id: faker.datatype.number(),
   createdAt: Sync.each(() => new Date()),
   updatedAt: Sync.each(() => new Date()),
 });

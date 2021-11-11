@@ -5,6 +5,6 @@ import { Deck } from 'src/@generated/prisma-nestjs-graphql/_models/deck.model';
 
 export const deckFactory = Factory.Sync.makeFactory<Partial<Deck>>({
   title: faker.random.word(),
-  isPublic: faker.random.boolean(),
-  userId: faker.random.number(),
+  isPublic: faker.datatype.boolean(),
+  userId: faker.datatype.number(),
 }).combine(baseFactory);
