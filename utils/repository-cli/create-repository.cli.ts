@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
 import * as _ from 'lodash';
 const style = require('ansi-styles');

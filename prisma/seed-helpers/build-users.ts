@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { CreateUserInput } from 'src/users/dto/create-user.input';
 const faker = require('faker');
 

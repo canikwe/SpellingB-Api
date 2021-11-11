@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
 import { gql } from 'apollo-server-express';
 import { GqlTestRunner } from 'src/utils/e2e-tests';
-import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/deck-word/deck-word.model';
+import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/_models/deck-word.model';
 
 describe('DeckWordResolver (e2e)', () => {
   let app: INestApplication;
