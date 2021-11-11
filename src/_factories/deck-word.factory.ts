@@ -6,7 +6,7 @@ const faker = require('faker');
 
 export const wordFactory = Factory.Sync.makeFactory<Partial<DeckWord>>({
   starred: faker.datatype.boolean(),
-  order: faker.random.number(),
-  wordId: faker.random.number(),
-  deckId: faker.random.number(),
+  order: faker.datatype.number(),
+  wordId: faker.datatype.number(),
+  deckId: faker.datatype.number(),
 }).combine(baseFactory);
