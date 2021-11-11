@@ -10,7 +10,7 @@ export class UserResolver extends BaseResolver({
   entityRef: User,
   findManyInputRef: FindManyUserArgs,
 }) {
-  decksLoader = decksLoader('userId');
+  private decksLoader = decksLoader('userId');
 
   constructor(private readonly baseService: BaseService) {
     super(baseService);

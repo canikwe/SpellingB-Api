@@ -31,7 +31,7 @@ describe('UserResolver', () => {
     let result: Deck[];
 
     beforeEach(async () => {
-      resolver.decksLoader = {
+      (resolver as any).decksLoader = {
         load: jest.fn().mockReturnValue(deckFactory.buildList(5)),
       } as any;
       result = await resolver.decks(userFactory.build() as User);
