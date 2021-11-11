@@ -9,7 +9,7 @@ export class BaseService {
     return this.baseRepository.findOne(id, modelName);
   }
 
-  findAll(modelName: string): Promise<any[]> {
-    return this.baseRepository.find(modelName);
+  findAll<T>(modelName: string, findManyArgs?: T): Promise<any[]> {
+    return this.baseRepository.find(modelName, findManyArgs);
   }
 }

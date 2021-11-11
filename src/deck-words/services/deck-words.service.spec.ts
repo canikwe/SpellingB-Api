@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DeckWordsService } from './deck-words.service';
 import { DeckWordRepository } from '../repositories/deck-word.repository';
-import { createSpyFromClass } from 'src/utils/unit-tests';
+import { createSpyFromClass } from 'test/unit-tests';
 
 describe('DeckWordsService', () => {
   let service: DeckWordsService;

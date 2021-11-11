@@ -6,34 +6,33 @@ import { BoolFilter } from '../prisma/bool-filter.input';
 
 @InputType()
 export class DeckWordScalarWhereInput {
+  @Field(() => [DeckWordScalarWhereInput], { nullable: true })
+  AND?: Array<DeckWordScalarWhereInput>;
 
-    @Field(() => [DeckWordScalarWhereInput], {nullable:true})
-    AND?: Array<DeckWordScalarWhereInput>;
+  @Field(() => [DeckWordScalarWhereInput], { nullable: true })
+  OR?: Array<DeckWordScalarWhereInput>;
 
-    @Field(() => [DeckWordScalarWhereInput], {nullable:true})
-    OR?: Array<DeckWordScalarWhereInput>;
+  @Field(() => [DeckWordScalarWhereInput], { nullable: true })
+  NOT?: Array<DeckWordScalarWhereInput>;
 
-    @Field(() => [DeckWordScalarWhereInput], {nullable:true})
-    NOT?: Array<DeckWordScalarWhereInput>;
+  @Field(() => IntFilter, { nullable: true })
+  id?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    id?: IntFilter;
+  @Field(() => DateTimeFilter, { nullable: true })
+  createdAt?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
-    createdAt?: DateTimeFilter;
+  @Field(() => DateTimeFilter, { nullable: true })
+  updatedAt?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
-    updatedAt?: DateTimeFilter;
+  @Field(() => BoolFilter, { nullable: true })
+  starred?: BoolFilter;
 
-    @Field(() => BoolFilter, {nullable:true})
-    starred?: BoolFilter;
+  @Field(() => IntFilter, { nullable: true })
+  order?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    order?: IntFilter;
+  @Field(() => IntFilter, { nullable: true })
+  wordId?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    wordId?: IntFilter;
-
-    @Field(() => IntFilter, {nullable:true})
-    deckId?: IntFilter;
+  @Field(() => IntFilter, { nullable: true })
+  deckId?: IntFilter;
 }

@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BaseService } from './base.service';
 import { BaseRepository } from '../repositories/base.repository';
-import { Spy, createSpyFromClass } from 'src/utils/unit-tests';
+import { Spy, createSpyFromClass } from 'test/unit-tests';
 
 describe('PrismaService', () => {
   let service: BaseService;

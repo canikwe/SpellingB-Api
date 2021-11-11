@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WordService } from './word.service';
 import { WordRepository } from '../repositories/word.repository';
-import { createSpyFromClass } from '../../utils/unit-tests/create-spy-from-class';
+import { createSpyFromClass } from '../../../test/unit-tests/create-spy-from-class';
 
 describe('WordService', () => {
   let service: WordService;

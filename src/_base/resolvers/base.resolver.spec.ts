@@ -1,20 +1,25 @@
 import { BaseService } from '../services/base.service';
 import { BaseResolver } from './base.resolver';
 import { BaseResolverHostType } from '../types/base-resolver-host.type';
-import { Spy, createSpyFromClass } from 'src/utils/unit-tests';
+import { Spy, createSpyFromClass } from 'test/unit-tests';
 
 describe('BaseResolver', () => {
   let resolver: BaseResolverHostType;
   let serviceSpy: Spy<BaseService>;
-  class mockClass {
+  class mockEntity {
+    name = 'My Awesome Class Name';
+  }
+
+  class mockFindManyArgs {
     name = 'My Awesome Class Name';
   }
 
   beforeEach(() => {
-    serviceSpy = (createSpyFromClass(
-      BaseService,
-    ) as unknown) as Spy<BaseService>;
-    const base = BaseResolver(mockClass);
+    serviceSpy = createSpyFromClass(BaseService) as unknown as Spy<BaseService>;
+    const base = BaseResolver({
+      entityRef: mockEntity,
+      findManyInputRef: mockFindManyArgs,
+    });
     resolver = new base(serviceSpy);
   });
 

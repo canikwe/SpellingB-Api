@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { createSpyFromClass } from 'src/utils/unit-tests/create-spy-from-class';
-import { Spy } from 'src/utils/unit-tests/spy.type';
+import { createSpyFromClass } from 'test/unit-tests/create-spy-from-class';
+import { Spy } from 'test/unit-tests/spy.type';
 import { UserRepository } from '../repositories/user.repository';
 import { UserService } from './user.service';
 
