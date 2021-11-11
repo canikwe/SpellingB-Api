@@ -64,13 +64,13 @@ type User {
 }
 
 type Query {
-  Users(userFindManyInput: FindManyUserArgs): [User!]!
+  Users(findManyUserArgs: FindManyUserArgs): [User!]!
   User(id: Int!): User!
-  Words(wordFindManyInput: FindManyWordArgs): [Word!]!
+  Words(findManyWordArgs: FindManyWordArgs): [Word!]!
   Word(id: Int!): Word!
-  Decks(deckFindManyInput: FindManyDeckArgs): [Deck!]!
+  Decks(findManyDeckArgs: FindManyDeckArgs): [Deck!]!
   Deck(id: Int!): Deck!
-  DeckWords(deckWordFindManyInput: FindManyDeckWordArgs): [DeckWord!]!
+  DeckWords(findManyDeckWordArgs: FindManyDeckWordArgs): [DeckWord!]!
   DeckWord(id: Int!): DeckWord!
 }
 

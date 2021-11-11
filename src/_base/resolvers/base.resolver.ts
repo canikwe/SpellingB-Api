@@ -9,7 +9,8 @@ export function BaseResolver<E extends Type<unknown>, F extends Type<unknown>>({
   entityRef,
   findManyInputRef,
 }: BaseResolverConfig<E, F>): any {
-  const modelName = camelCase(entityRef.name);
+  const entityName = camelCase(entityRef.name);
+  const findManyName = camelCase(findManyInputRef.name);
 
   @Resolver({ isAbstract: true })
   abstract class BaseResolverHost {
@@ -17,18 +18,18 @@ export function BaseResolver<E extends Type<unknown>, F extends Type<unknown>>({
 
     @Query(() => [entityRef], { name: pluralize(entityRef.name) })
     findAll(
-      @Args(modelName + 'FindManyInput', {
+      @Args(findManyName, {
         type: () => findManyInputRef,
         nullable: true,
       })
       findManyInput?: F,
     ) {
-      return this.service.findAll(modelName, findManyInput);
+      return this.service.findAll(entityName, findManyInput);
     }
 
     @Query(() => entityRef, { name: entityRef.name })
     findOne(@Args('id', { type: () => Int }) id: number) {
-      return this.service.findOne(id, modelName);
+      return this.service.findOne(id, entityName);
     }
   }
 
