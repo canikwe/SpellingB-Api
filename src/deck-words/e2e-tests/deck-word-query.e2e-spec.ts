@@ -2,12 +2,12 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
 import { gql } from 'apollo-server-express';
-import { GqlTestRunner } from 'test/e2e-tests';
-import { Word } from 'src/@generated/prisma-nestjs-graphql/_models/word.model';
+import { GqlTestRunner } from '../../../test/e2e-tests';
+import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/_models/deck-word.model';
 
-describe('WordResolver (e2e)', () => {
+describe('DeckWord Query (e2e)', () => {
   let app: INestApplication;
-  let word: Word;
+  let deckWord: DeckWord;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -29,10 +29,10 @@ describe('WordResolver (e2e)', () => {
   });
 
   describe('findAll()', () => {
-    it('should return an array of words', async () => {
+    it('should return an array of deckWords', async () => {
       const query = gql`
         query {
-          Words {
+          DeckWords {
             id
           }
         }
@@ -42,19 +42,19 @@ describe('WordResolver (e2e)', () => {
         app.getHttpServer(),
         query,
       );
-      const words = res.body?.data?.Words;
-      word = words?.[0];
+      const deckWords = res.body?.data?.DeckWords;
+      deckWord = deckWords?.[0];
 
-      expect(words).toBeDefined();
-      expect(words?.length).toBeGreaterThan(0);
+      expect(deckWords).toBeDefined();
+      expect(deckWords?.length).toBeGreaterThan(0);
     });
   });
 
   describe('findOne()', () => {
-    it('should return a word', async () => {
+    it('should return a DeckWord', async () => {
       const query = gql`
         query {
-          Word(id: ${word?.id}) {
+          DeckWord(id: ${deckWord?.id}) {
             id
           }
         }
@@ -64,7 +64,7 @@ describe('WordResolver (e2e)', () => {
         query,
       );
 
-      expect(res.body?.data?.Word).toBeDefined();
+      expect(res.body?.data?.DeckWord).toBeDefined();
     });
   });
 });

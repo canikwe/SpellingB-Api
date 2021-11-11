@@ -1,5 +1,5 @@
 import { groupBy, camelCase, Dictionary } from 'lodash';
-import { prisma } from 'prisma/client';
+import { prisma } from '../../../prisma/client';
 import { BatchConfig } from './batch-config.interface';
 
 export const batchManyEntitiesThrough = async <T>({

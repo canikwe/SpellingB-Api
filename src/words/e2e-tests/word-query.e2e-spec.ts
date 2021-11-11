@@ -2,12 +2,12 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
 import { gql } from 'apollo-server-express';
-import { GqlTestRunner } from 'test/e2e-tests';
-import { DeckWord } from 'src/@generated/prisma-nestjs-graphql/_models/deck-word.model';
+import { GqlTestRunner } from '../../../test/e2e-tests';
+import { Word } from 'src/@generated/prisma-nestjs-graphql/_models/word.model';
 
-describe('DeckWordResolver (e2e)', () => {
+describe('Word Query (e2e)', () => {
   let app: INestApplication;
-  let deckWord: DeckWord;
+  let word: Word;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -29,10 +29,10 @@ describe('DeckWordResolver (e2e)', () => {
   });
 
   describe('findAll()', () => {
-    it('should return an array of deckWords', async () => {
+    it('should return an array of words', async () => {
       const query = gql`
         query {
-          DeckWords {
+          Words {
             id
           }
         }
@@ -42,19 +42,19 @@ describe('DeckWordResolver (e2e)', () => {
         app.getHttpServer(),
         query,
       );
-      const deckWords = res.body?.data?.DeckWords;
-      deckWord = deckWords?.[0];
+      const words = res.body?.data?.Words;
+      word = words?.[0];
 
-      expect(deckWords).toBeDefined();
-      expect(deckWords?.length).toBeGreaterThan(0);
+      expect(words).toBeDefined();
+      expect(words?.length).toBeGreaterThan(0);
     });
   });
 
   describe('findOne()', () => {
-    it('should return a DeckWord', async () => {
+    it('should return a word', async () => {
       const query = gql`
         query {
-          DeckWord(id: ${deckWord?.id}) {
+          Word(id: ${word?.id}) {
             id
           }
         }
@@ -64,7 +64,7 @@ describe('DeckWordResolver (e2e)', () => {
         query,
       );
 
-      expect(res.body?.data?.DeckWord).toBeDefined();
+      expect(res.body?.data?.Word).toBeDefined();
     });
   });
 });
