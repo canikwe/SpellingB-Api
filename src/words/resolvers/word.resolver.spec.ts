@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { WordResolver } from './word.resolver';
 import { createSpyFromClass } from '../../../test/unit-tests/create-spy-from-class';
 import { BaseService } from '../../_base/services/base.service';
+import { WordService } from '../services/word.service';
 
 describe('WordResolver', () => {
   let resolver: WordResolver;
@@ -13,6 +14,10 @@ describe('WordResolver', () => {
         {
           provide: BaseService,
           useValue: createSpyFromClass(BaseService),
+        },
+        {
+          provide: WordService,
+          useValue: createSpyFromClass(WordService),
         },
       ],
     }).compile();

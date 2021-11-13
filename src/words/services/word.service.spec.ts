@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { WordService } from './word.service';
 import { WordRepository } from '../repositories/word.repository';
 import { createSpyFromClass } from '../../../test/unit-tests/create-spy-from-class';
+import { HttpService } from '@nestjs/axios';
 
 describe('WordService', () => {
   let service: WordService;
@@ -13,6 +14,10 @@ describe('WordService', () => {
         {
           provide: WordRepository,
           useValue: createSpyFromClass(WordRepository),
+        },
+        {
+          provide: HttpService,
+          useValue: createSpyFromClass(HttpService),
         },
       ],
     }).compile();
