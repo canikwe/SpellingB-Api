@@ -1,9 +1,15 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import { AppModule } from '../../app.module';
-import { gql } from 'apollo-server-express';
 import { GqlTestRunner } from '../../../test/e2e-tests';
 import { Word } from 'src/@generated/prisma-nestjs-graphql/_models/word.model';
+import {
+  RandomWordAndDefinitionQuery,
+  WordQuery,
+  WordsAndDefinitionsQuery,
+  WordsQuery,
+} from './queries';
+import supertest from 'supertest';
 
 describe('Word Query (e2e)', () => {
   let app: INestApplication;
@@ -29,19 +35,13 @@ describe('Word Query (e2e)', () => {
   });
 
   describe('findAll()', () => {
-    it('should return an array of words', async () => {
-      const query = gql`
-        query {
-          Words {
-            id
-          }
-        }
-      `;
+    let res: supertest.Response;
 
-      const res = await GqlTestRunner.sendGqlRequest(
-        app.getHttpServer(),
-        query,
-      );
+    beforeEach(async () => {
+      res = await GqlTestRunner.sendGqlRequest(app.getHttpServer(), WordsQuery);
+    });
+
+    it('should return an array of words', async () => {
       const words = res.body?.data?.Words;
       word = words?.[0];
 
@@ -51,20 +51,48 @@ describe('Word Query (e2e)', () => {
   });
 
   describe('findOne()', () => {
-    it('should return a word', async () => {
-      const query = gql`
-        query {
-          Word(id: ${word?.id}) {
-            id
-          }
-        }
-      `;
-      const res = await GqlTestRunner.sendGqlRequest(
-        app.getHttpServer(),
-        query,
-      );
+    let res: supertest.Response;
 
+    beforeEach(async () => {
+      res = await GqlTestRunner.sendGqlRequest(
+        app.getHttpServer(),
+        WordQuery(word),
+      );
+    });
+
+    it('should return a word', async () => {
       expect(res.body?.data?.Word).toBeDefined();
+    });
+  });
+
+  describe('getRandomWordAndDefinition()', () => {
+    let res: supertest.Response;
+
+    beforeEach(async () => {
+      res = await GqlTestRunner.sendGqlRequest(
+        app.getHttpServer(),
+        RandomWordAndDefinitionQuery,
+      );
+    });
+
+    it('should return a random word', async () => {
+      expect(res.body?.data?.RandomWordAndDefinition).toBeDefined();
+    });
+  });
+
+  describe('getWordsAndDefinitions()', () => {
+    let res: supertest.Response;
+
+    beforeEach(async () => {
+      res = await GqlTestRunner.sendGqlRequest(
+        app.getHttpServer(),
+        WordsAndDefinitionsQuery,
+      );
+    });
+
+    it('should return words', async () => {
+      expect(res.body?.data?.WordsAndDefinitions).toBeDefined();
+      expect(res.body?.data?.WordsAndDefinitions).toBeInstanceOf(Array);
     });
   });
 });

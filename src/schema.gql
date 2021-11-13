@@ -64,11 +64,36 @@ type Deck {
   words: [Word!]!
 }
 
+type DictionaryWordRes {
+  word: String
+  phonetic: String
+  phonetics: [Phonetic!]
+  origin: String
+  meanings: [Meaning!]
+}
+
+type Phonetic {
+  text: String
+  audio: String
+}
+
+type Meaning {
+  partOfSpeech: String
+  definitions: [Definition!]
+}
+
+type Definition {
+  definition: String
+  example: String
+}
+
 type Query {
   Users(findManyUserArgs: FindManyUserArgs): [User!]!
   User(id: Int!): User!
   Words(findManyWordArgs: FindManyWordArgs): [Word!]!
   Word(id: Int!): Word!
+  WordsAndDefinitions(word: String!): [DictionaryWordRes!]
+  RandomWordAndDefinition: DictionaryWordRes
   Decks(findManyDeckArgs: FindManyDeckArgs): [Deck!]!
   Deck(id: Int!): Deck!
   DeckWords(findManyDeckWordArgs: FindManyDeckWordArgs): [DeckWord!]!
