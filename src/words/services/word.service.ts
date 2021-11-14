@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { DictionaryWordRes } from '../entities/dictionary-word-response.entity';
+import { DictionaryEntry } from '../entities/dictionary-entry.entity';
 import { WordRepository } from '../repositories/word.repository';
 import * as faker from 'faker';
 
@@ -11,7 +11,7 @@ export class WordService {
     private httpService: HttpService,
   ) {}
 
-  async fetchWord(word: string): Promise<DictionaryWordRes[]> {
+  async fetchWord(word: string): Promise<DictionaryEntry[]> {
     return this.httpService
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .toPromise()
@@ -19,12 +19,12 @@ export class WordService {
       .catch(() => []);
   }
 
-  async getRandomWord(): Promise<DictionaryWordRes> {
+  async getRandomWord(): Promise<DictionaryEntry> {
     return this.httpService
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${this.randomWord}`)
       .toPromise()
       .then((res) => res.data[0])
-      .catch(() => ({}));
+      .catch(() => null);
   }
 
   private get randomWord() {

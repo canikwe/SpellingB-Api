@@ -1,18 +1,18 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class DictionaryWordRes {
+export class DictionaryEntry {
   @Field({ nullable: true })
   word: string;
 
   @Field({ nullable: true })
   phonetic: string;
 
-  @Field(() => [Phonetic], { nullable: true })
-  phonetics: Phonetic[];
-
   @Field({ nullable: true })
   origin: string;
+
+  @Field(() => [Phonetic], { nullable: true })
+  phonetics: Phonetic[];
 
   @Field(() => [Meaning], { nullable: true })
   meanings: Meaning[];
