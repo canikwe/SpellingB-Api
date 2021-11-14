@@ -3,7 +3,7 @@ import { FindManyWordArgs } from 'src/@generated/prisma-nestjs-graphql/word/find
 import { Word } from 'src/@generated/prisma-nestjs-graphql/_models/word.model';
 import { BaseResolver } from 'src/_base/resolvers/base.resolver';
 import { BaseService } from '../../_base/services/base.service';
-import { DictionaryWordRes } from '../entities/dictionary-word-response.entity';
+import { DictionaryEntry } from '../entities/dictionary-entry.entity';
 import { WordService } from '../services/word.service';
 
 @Resolver(() => Word)
@@ -18,7 +18,7 @@ export class WordResolver extends BaseResolver({
     super(baseService);
   }
 
-  @Query(() => [DictionaryWordRes], {
+  @Query(() => [DictionaryEntry], {
     nullable: true,
     name: 'WordsAndDefinitions',
   })
@@ -26,7 +26,7 @@ export class WordResolver extends BaseResolver({
     return this.wordService.fetchWord(word);
   }
 
-  @Query(() => DictionaryWordRes, {
+  @Query(() => DictionaryEntry, {
     nullable: true,
     name: 'RandomWordAndDefinition',
   })
